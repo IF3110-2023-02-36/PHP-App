@@ -1,4 +1,3 @@
 <?php
-include ("database.php");
-$db = new Database();
+include ("components/produk-card.php");
 ?>
