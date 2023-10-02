@@ -2,6 +2,8 @@
 require_once ("database.php");
 require_once("./controller/Controller.php");
 require_once ("./controller/ProductController.php");
+require_once ("./models/Model.php");
+require_once ("./views/View.php");
 // require_once ("./models/ProductModel.php");
 // require_once ("./views/home/HomePageView.php");
 // $db = new Database();

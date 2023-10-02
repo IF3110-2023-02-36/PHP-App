@@ -1,11 +1,7 @@
 <?php
 
-class ProductModel{
-    private $database;
 
-    public function __construct(){
-        $this->database = new Database();
-    }
+class ProductModel extends Model{
 
     public function getAllProduct(){
         $query = "SELECT * FROM products";
