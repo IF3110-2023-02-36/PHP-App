@@ -1,3 +1,2 @@
 <?php
-include ("components/produk-card.php");
-?>
+include ("components/home/home.php");
