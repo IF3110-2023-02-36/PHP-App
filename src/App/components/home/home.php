@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global CSS -->
     <link rel="stylesheet" href="../../public/styles/product/product-card.css">
+    <link rel="stylesheet" href="../../public/styles/template/navbar.css">
     <title>Home Page</title>
 </head>
+
 <body>
+    <?php
+    $current_page = "home";
+    include(dirname(__DIR__) . '/template/navbar.php');
+    ?>
     <span class="background">
         <span class="centering">
             <h1>Home Page</h1>
             <h2>List barang mu</h2>
             <section class="articles">
-                <?php 
+                <?php
                 include_once(dirname(__DIR__) . "/template/product-card.php");
                 
                 foreach($this->data as $product){
@@ -42,4 +49,5 @@
         </span>
     </span>
 </body>
+
 </html>
