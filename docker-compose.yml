@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - ./src/app:/var/www/html
+      - ./src/App:/var/www/html
 
   mysql:
     image: mysql:latest
