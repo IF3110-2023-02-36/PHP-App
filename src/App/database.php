@@ -49,6 +49,9 @@ class Database{
             FOREIGN KEY (product_id) REFERENCES products(id),
             FOREIGN KEY (user_id) REFERENCES users(id)
         );");
-        
+    }
+
+    public function execute ($query){
+        return $this->conn->query($query)->fetch_all();
     }
 }
