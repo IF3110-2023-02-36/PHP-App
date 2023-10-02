@@ -1,0 +1,38 @@
+#site-menu ul {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#site-menu {
+    background-color: #212121;
+    white-space: nowrap;
+    font-family: sans-serif;
+}
+
+#site-menu ul li {
+    list-style-type: none;
+    display: flex;
+}
+
+#site-menu ul li:hover {
+    background-color: #424242;
+}
+
+#site-menu ul li a {
+    color: #fff;
+    display: flex;
+    text-decoration: none;
+    padding: 1em;
+    align-items: center;
+}
+
+#site-menu ul li a:visited {
+    color: #fff;
+}
+
+#site-menu ul li[aria-current] a {
+    color: #64b5f6;
+}
