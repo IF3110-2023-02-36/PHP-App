@@ -52,6 +52,20 @@ class Database{
     }
 
     public function execute ($query){
-        return $this->conn->query($query)->fetch_all();
+        return $this->conn->query($query);
+    }
+
+    public function getConn(){
+        return $this->conn;
+    }
+    function bindParameters(mysqli_stmt $stmt, $types, ...$values) {
+        $bindParams = [];
+        $bindParams[] = $types;
+    
+        foreach ($values as &$value) {
+            $bindParams[] = &$value;
+        }
+    
+        return call_user_func_array([$stmt, 'bind_param'], $bindParams);
     }
 }
