@@ -6,14 +6,19 @@ class Routing {
     public function __construct() {
         // sementara defaultnya ke home
         $controllerDir = __DIR__ . '/../controller';
-        require_once $controllerDir . '/HomePageController.php';
-        $this->controller = new HomePageController();
+        require_once $controllerDir . '/HomeController.php';
+        $this->controller = new HomeController();
 
         $url = $this->parseURL();
         if($url != NULL) {
             $ucURL = ucfirst($url);
-            require_once $controllerDir . '/' . $ucURL . 'PageController.php';
-            $controllerName = $ucURL . "PageController";
+            $controllerName = $ucURL . "Controller";
+            $controllerFile = $controllerDir . '/' . $controllerName . '.php';
+            if(!file_exists($controllerFile)) {
+                $controllerName = "NotFoundController";
+                $controllerFile = $controllerDir . '/' . $controllerName . '.php';
+            }
+            require_once $controllerFile;
             $this->controller = new $controllerName();
         }
 
