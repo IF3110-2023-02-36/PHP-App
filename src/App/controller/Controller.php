@@ -1,10 +1,9 @@
 <?php
 
 class Controller{
-    public function view($folder, $view, $data = [])
-    {
-        require_once __DIR__ . "./../views/$folder/$view.php";
-        return new $view($data);
+    public function view($folder, $filename, $data = []) {
+        require_once __DIR__ . "./../views/View.php";
+        return new View($folder, $filename, $data);
     }
 
     public function model($model){
