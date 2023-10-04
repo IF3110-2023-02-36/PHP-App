@@ -4,6 +4,9 @@
 
 class ProductController extends Controller{
     public function index(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            throw new Exception('Method not allowed', 405);
+        }
         $productModel = $this->model("ProductModel");
 
         $data = $productModel->getAllProduct()->fetch_all();
@@ -15,7 +18,11 @@ class ProductController extends Controller{
         $view->render();
     }
 
+
     public function show($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            throw new Exception('Method not allowed', 405);
+        }
         $productModel = $this->model("ProductModel");
 
         $data = $productModel->getProductById($id)->fetch_assoc();
@@ -29,6 +36,9 @@ class ProductController extends Controller{
     }
 
     public function create(){
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            throw new Exception('Method not allowed', 405);
+        }
         $data = []; //get data kategori dulu
         $view = $this->view('product', 'addProduct', $data);
 
@@ -53,6 +63,9 @@ class ProductController extends Controller{
     }
 
     public function edit($id){
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            throw new Exception('Method not allowed', 405);
+        }
         $productModel = $this->model("ProductModel");
 
         $data = $productModel->getProductById($id)->fetch_assoc();
@@ -82,6 +95,9 @@ class ProductController extends Controller{
     }
 
     public function delete($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            throw new Exception('Method not allowed', 405);
+        }
         $productModel = $this->model("ProductModel")->deleteProduct($id);
     }
 }
