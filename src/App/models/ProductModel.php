@@ -4,8 +4,37 @@
 class ProductModel extends Model{
 
     public function getAllProduct(){
-        $query = "SELECT * FROM products";
+        $query = "SELECT * FROM products ORDER BY name ASC";
+        
         return $this->database->execute($query);
+    }
+
+    public function getSortedProduct($column){
+        $query = "SELECT * FROM products ORDER BY $column ASC";
+
+        return $this->database->execute($query);
+    }
+
+    public function search($query, $data){
+        $match = [];
+        // print_r($data);
+        foreach ($data as $product){
+            if(stristr($product[2], $query)){
+                array_push($match, $product);
+            }
+        }
+        return $match;
+    }
+
+    public function filter ($category_id, $data){
+        $match = [];
+        foreach ($data as $product){
+            if($product[1] == $category_id){
+                array_push($match, $product);
+            }
+        }
+
+        return $match;
     }
 
     public function getProductById($id){
