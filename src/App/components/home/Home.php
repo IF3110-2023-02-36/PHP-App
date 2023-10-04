@@ -17,6 +17,7 @@
     ?>
     <span class="background">
         <span class="centering">
+            <h><?php if(isset($_SESSION['user_id']))echo "Halo " . $_SESSION['user_id'];?></h>
             <h1>Home Page</h1>
             <h2>List barang mu</h2>
             <section class="articles">
