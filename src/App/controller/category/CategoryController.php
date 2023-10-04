@@ -2,9 +2,9 @@
 
 class CategoryController extends Controller{
     public function index(){
-        $productModel = $this->model("CategoryModel");
+        $categoryModel = $this->model("CategoryModel");
 
-        $data = $productModel->getCategory()->fetch_all();
+        $data = $categoryModel->getCategory()->fetch_all();
 
         $dir = __DIR__;
         $dir = explode("/", $dir);

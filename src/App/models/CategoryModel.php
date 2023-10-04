@@ -24,7 +24,9 @@ class CategoryModel extends Model{
         $query = "DELETE FROM categories WHERE id = ?";
 
         $stmt = $this->database->getConn()->prepare($query);
+        var_dump($stmt);
         $stmt->bind_param("i", $id);
+        var_dump($stmt);
 
         if ($stmt->execute()) {
             echo "Record deleted successfully.";

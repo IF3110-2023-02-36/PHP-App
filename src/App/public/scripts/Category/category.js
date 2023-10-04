@@ -1,4 +1,5 @@
 function editCategory(row, categoryId) {
+    event.preventDefault()
     // Dapatkan elemen <td> yang berisi nama kategori
     const categoryCell = row.querySelector('.category-name');
     
@@ -14,20 +15,24 @@ function editCategory(row, categoryId) {
     categoryCell.innerHTML = '';
     categoryCell.appendChild(input);
     
+    // Buat tombol "save"
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'save';
+    
+    // Tambahkan tombol "save" ke dalam form
+    row.querySelector('form').appendChild(saveButton);
+    
     // Fokuskan input
     input.focus();
     
-    // Tambahkan event listener untuk menyimpan perubahan saat input kehilangan fokus
-    input.addEventListener('blur', function() {
+    // Tambahkan event listener untuk menyimpan perubahan saat tombol "save" diklik
+    saveButton.addEventListener('click', function() {
         // Simpan perubahan ke server atau lakukan yang lain sesuai kebutuhan
         const newCategoryName = input.value;
 
-        // Dapatkan category_id dari form yang sesuai
-        // const categoryId = row.querySelector('[name="category_id"]').value;
-
         var xhr = new XMLHttpRequest();
         var method = "POST"; // Gantilah sesuai dengan jenis permintaan yang Anda perlukan
-        var url = "editCategory.php"; // Gantilah dengan URL controller yang sesuai
+        var url = "EditCategory.php"; // Gantilah dengan URL controller yang sesuai
 
         var formData = new FormData();
         formData.append("category_id", categoryId); // Gunakan categoryId yang sudah didapatkan
@@ -50,13 +55,14 @@ function editCategory(row, categoryId) {
     });
 }
 
+
 // Menangani klik tombol "delete"
 function deleteCategory(categoryId) {
     if (confirm('Apakah Anda yakin ingin menghapus kategori ini?')) {
         // Konfirmasi penghapusan
         var xhr = new XMLHttpRequest();
         var method = "POST";
-        var url = "deleteCategory.php"; // Gantilah dengan URL controller yang sesuai
+        var url = "DeleteCategory.php"; // Gantilah dengan URL controller yang sesuai
 
         var formData = new FormData();
         formData.append("category_id", categoryId);

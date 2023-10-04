@@ -13,6 +13,9 @@ $routes = array(
     'Product' => "product",
     'EditProduct' => "product",
     'Category' => "category",
+    'AddCategory' => "category",
+    'EditCategory' => "category",
+    'DeleteCategory' => "category",
 );
 
 

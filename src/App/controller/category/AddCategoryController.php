@@ -8,6 +8,8 @@ class addCategoryController extends Controller{
             $categoryModel = $this->model("CategoryModel");
 
             $categoryModel->addCategory($category_name);
+
+            header("Location: /category");
         }
     }
 }
