@@ -18,7 +18,13 @@ $userIsAdmin = isUserAdmin();
         <ul>
             <li <?php if ($current_page == "home") echo 'aria-current="page"'; ?>><a href="/">Home</a></li>
             <li <?php if ($current_page == "categories") echo 'aria-current="page"'; ?>><a href="/Categories.php">Categories</a></li>
-            <li <?php if ($current_page == "search") echo 'aria-current="page"'; ?>><a href="/Search.php">Search</a></li>
+
+            <li class="search-bar">
+                <form action="/Search.php" method="GET">
+                    <input type="text" name="query" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </li>
 
             <?php if (!$userLoggedIn) : ?>
                 <!-- Display "Register" and "Log in" when not logged in -->
