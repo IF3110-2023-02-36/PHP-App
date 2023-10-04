@@ -36,9 +36,9 @@ class CategoryModel extends Model{
     }
 
     public function updateCategory($id, $name){
-        $stmt = $this->database->getConn()->prepare("UPDATE categories SET name = ? WHERE id =$id");
+        $stmt = $this->database->getConn()->prepare("UPDATE categories SET name = ? WHERE id = ?");
 
-        $stmt->bind_param("s", $name);
+        $stmt->bind_param("si", $name, $id);
     
     // Menjalankan pernyataan SQL
         if ($stmt->execute()) {

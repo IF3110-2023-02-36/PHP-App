@@ -34,7 +34,7 @@
                         <form>
                             <td>$i</td>
                             <td class='category-name'>$category[1]</td>
-                            <td><button onclick='editCategory(this.parentNode.parentNode)'>edit</button></td>
+                            <td class='edit-button'><button onclick='editCategory(this.parentNode.parentNode, $category[0])'>edit</button></td>
                             <td><button onclick='deleteCategory($category[0])'>delete</button></td>
                         </form>
                     </tr>
@@ -48,7 +48,6 @@
         <form action="AddCategory.php" method="POST">
             <label for="category_name">Nama Kategori:</label>
             <input type="text" id="category_name" name="category_name" required>
-            
             <button type="submit">Tambah Kategori</button>
         </form>
     </main>
