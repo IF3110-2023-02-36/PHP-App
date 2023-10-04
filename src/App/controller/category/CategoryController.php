@@ -16,14 +16,4 @@ class CategoryController extends Controller{
         $view->render();
     }
 
-    public function create(){
-        // if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        //     throw new Exception('Method not allowed', 405);
-        // }
-
-        $data = []; //get data kategori dulu
-        $view = $this->view('category', 'addCategory', $data);
-
-        $view->render();
-    }
 }
