@@ -2,18 +2,17 @@
 
 class CategoryController extends Controller{
     public function index(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            throw new Exception('Method not allowed', 405);
-        }
         $productModel = $this->model("CategoryModel");
 
         $data = $productModel->getCategory()->fetch_all();
-        // print_r($data);
 
-        // require_once __DIR__. "./../components/home.php";
-        $view = $this->view('category', 'category', $data);
+        $dir = __DIR__;
+        $dir = explode("/", $dir);
+        $folderName = end($dir);
+        $className = get_class();
+        $fileName = str_replace('Controller', '', $className);
+        $view = $this->view($folderName, $fileName, $data);
 
         $view->render();
     }
-
 }

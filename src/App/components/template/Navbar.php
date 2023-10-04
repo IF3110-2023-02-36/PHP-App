@@ -17,7 +17,7 @@ $userIsAdmin = isUserAdmin();
     <nav id="site-menu">
         <ul>
             <li <?php if ($current_page == "home") echo 'aria-current="page"'; ?>><a href="/">Home</a></li>
-            <li <?php if ($current_page == "categories") echo 'aria-current="page"'; ?>><a href="/Categories.php">Categories</a></li>
+            <li <?php if ($current_page == "categories") echo 'aria-current="page"'; ?>><a href="/Category.php">Categories</a></li>
 
             <li class="search-bar">
                 <form action="/Search.php" method="GET">

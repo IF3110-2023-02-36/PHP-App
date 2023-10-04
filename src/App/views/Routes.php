@@ -10,6 +10,7 @@ $routes = array(
     'AddProduct' => "product",
     'Product' => "product",
     'EditProduct' => "product",
+    'Category' => "category",
 );
 
 

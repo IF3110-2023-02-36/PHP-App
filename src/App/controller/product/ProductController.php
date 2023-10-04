@@ -17,11 +17,4 @@ class ProductController extends Controller{
 
         $view->render();
     }
-
-    public function delete($id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            throw new Exception('Method not allowed', 405);
-        }
-        $productModel = $this->model("ProductModel")->deleteProduct($id);
-    }
 }
