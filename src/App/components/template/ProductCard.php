@@ -1,5 +1,5 @@
 <?php
-function product_card_template($imgsrc, $name, $price, $text, $alttext) {
+function product_card_template($imgsrc, $name, $price, $text, $alttext, $productId) {
     $html = <<<"EOT"
     <article>
         <figure>
@@ -9,7 +9,7 @@ function product_card_template($imgsrc, $name, $price, $text, $alttext) {
             <h2>$name</h2>
             <h4>$price</h4>
             <p>$text</p>
-            <a href="#">Add to cart</a>
+            <a href="/product/$productId">Add to cart</a>
         </div>
     </article>
 EOT;

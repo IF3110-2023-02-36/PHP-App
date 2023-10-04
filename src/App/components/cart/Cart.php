@@ -17,39 +17,50 @@
 
     <div class="cart-container">
         <h2>Your Shopping Cart</h2>
-
-        <?php if (empty($this->data['cartItems'])) : ?>
-            <p>Your cart is empty.</p>
-        <?php else : ?>
-            <table class="cart-items">
-                <thead>
+            <?php 
+            if (empty($this->data["cart"])) {
+                echo "<p>Your cart is empty.</p>";
+            } else {
+                $cartTable = "";
+                foreach ($this->data["cart"] as $item) {
+                    $itemDetail = $this->data['cartItems'][$item['product_id']];
+                    $total = $itemDetail['price'] * $item['quantity'];
+                    $cartTable .= 
+                    "
                     <tr>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th>Actions</th>
+                        <td>{$itemDetail['name']}</td>
+                        <td>Rp {$itemDetail['price']}</td>
+                        <td>
+                            <input type='number' class='quantity-input' min='1' value='{$item['quantity']}'>
+                        </td>
+                        <td>Rp $total</td>
+                        <td>
+                            <button class='update-cart-btn'>Update</button>
+                            <button class='remove-from-cart-btn'>Remove</button>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($this->data['cartItems'] as $item) : ?>
-                        <tr>
-                            <td><?php echo $item['name']; ?></td>
-                            <td>Rp <?php echo $item['price']; ?></td>
-                            <td>
-                                <input type="number" class="quantity-input" min="1" value="<?php echo $item['quantity']; ?>">
-                            </td>
-                            <td>Rp <?php echo $item['price'] * $item['quantity']; ?></td>
-                            <td>
-                                <button class="update-cart-btn">Update</button>
-                                <button class="remove-from-cart-btn">Remove</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
+                    ";
+                }
 
+                echo
+                "
+                <table class='cart-items>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        $cartTable
+                    </tbody>
+                </table>
+                ";
+            }
+            ?>
         <div class="cart-actions">
             <a href="/products">Continue Shopping</a>
             <button class="checkout-btn">Checkout</button>

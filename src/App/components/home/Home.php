@@ -30,7 +30,8 @@
                     $product[2],
                     $product[4],
                     $product[3],
-                    "AIPONG");
+                    "AIPONG",
+                    $product[0]);
                 }
                 ?>
             </section>

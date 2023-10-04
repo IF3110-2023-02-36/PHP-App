@@ -15,6 +15,7 @@ if (isset($_SESSION["user_username"])) {
 
 <body>
     <header>
+        <a class="a-header" href='/'>Home</a>
         <p>Login</p>
     </header>
     <form action="" method="POST" enctype="multipart/form-data">

@@ -22,12 +22,12 @@
             <h4>Rp <?php echo $this->data['price']; ?></h4>
             <p><?php echo $this->data['description']; ?></p>
 
-            <div class="product-actions">
+            <form class="product-actions" action="/addCart/<?= $this->data['id'] ?>" method="POST" enctype="multipart/form-data">
                 <h3>Quantity</h3>
-                <input type="number" id="quantity" min="1" value="1">
+                <input type="number" name="quantity" id="quantity" min="1" max="<?= $this->data['stock'] ?>"value="1">
                 <p class="stock-info">Stock: <?php echo $this->data['stock']; ?></p>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
+                <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            </form>
         </div>
     </div>
 </body>
