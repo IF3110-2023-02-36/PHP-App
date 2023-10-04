@@ -15,7 +15,7 @@
 
     <div class="product-form">
         <h1>Tambah Produk Baru</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="/AddProduct" method="POST" enctype="multipart/form-data">
             <label for="product_name">Nama Produk:</label>
             <input type="text" id="product_name" name="product_name" required>
             
