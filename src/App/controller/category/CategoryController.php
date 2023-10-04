@@ -1,12 +1,10 @@
-<?php
+<?php 
 
-// use Controller;
+class CategoryController extends Controller{
+    public function index(){
+        $productModel = $this->model("CategoryModel");
 
-class ProductController extends Controller{
-    public function index($id){
-        $productModel = $this->model("ProductModel");
-
-        $data = $productModel->getProductById($id)->fetch_assoc();
+        $data = $productModel->getCategory()->fetch_all();
 
         $dir = __DIR__;
         $dir = explode("/", $dir);
