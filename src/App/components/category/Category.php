@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
     <link rel="stylesheet" href="../../public/styles/category/category.css">
     <link rel="stylesheet" href="../../public/styles/category/addCategory.css">
+    <script src="../../public/scripts/Category/category.js"></script>
     <title>Kategori</title>
 </head>
 <body>
@@ -30,10 +31,12 @@
                     echo 
                     "
                     <tr>
-                        <td>$i</td>
-                        <td>$category[1]</td>
-                        <td><button>edit</button></td>
-                        <td><button>delete</button></td>
+                        <form>
+                            <td>$i</td>
+                            <td class='category-name'>$category[1]</td>
+                            <td><button onclick='editCategory(this.parentNode.parentNode, $category[0])'>edit</button></td>
+                            <td><button onclick='deleteCategory($category[0])'>delete</button></td>
+                        </form>
                     </tr>
                     ";
                     $i++;
@@ -49,5 +52,7 @@
             <button type="submit">Tambah Kategori</button>
         </form>
     </main>
+   
+
 </body>
 </html>
