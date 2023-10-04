@@ -1,13 +1,12 @@
 <?php
 function isUserLoggedIn()
 {
-    return isset($_SESSION['user_id']);
+    return isset($_SESSION['user_username']);
 }
 
 function isUserAdmin()
 {
-
-    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+    return isset($_SESSION['user_category']) && $_SESSION['user_category'] === 'admin';
 }
 
 $userLoggedIn = isUserLoggedIn();
