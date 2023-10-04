@@ -18,15 +18,13 @@ class EditProductController extends Controller{
     }
 
     public function post($id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $product_name = $_POST["product_name"];
-            $product_price = $_POST["product_price"];
-            $product_description = $_POST["product_description"];
-            $product_stock = $_POST["product_stock"];
-            
-            $productModel = $this->model("ProductModel");
+        $product_name = $_POST["product_name"];
+        $product_price = $_POST["product_price"];
+        $product_description = $_POST["product_description"];
+        $product_stock = $_POST["product_stock"];
+        
+        $productModel = $this->model("ProductModel");
 
-            $productModel->updateProduct($id, 1, $product_name, $product_description, $product_price, $product_stock);
-        }
+        $productModel->updateProduct($id, 1, $product_name, $product_description, $product_price, $product_stock);
     }
 }

@@ -18,14 +18,14 @@ class UserModel extends Model{
     }
 
     public function getUser($username) {
-        $query = 'SELECT name, username, email, category FROM users WHERE username = ? LIMIT 1';
+        $query = 'SELECT * FROM users WHERE username = ? LIMIT 1';
         $statement = $this->database->getConn()->prepare($query);
         $statement->bind_param("s", $username);
         $executeOk = $statement->execute();
         if(!$executeOk)return NULL;
         $result= $statement->get_result();
         if(!$result)return NULL;
-        $result = $result->fetch_all();
+        $result = $result->fetch_array();
         $statement->close();
         return $result;
     }
@@ -38,12 +38,11 @@ class UserModel extends Model{
         if(!$executeOk)throw new Exception("SQL query failed", 400);
         $result= $statement->get_result();
         if(!$result)throw new Exception("SQL query failed", 400);
-        $result = $result->fetch_all();
+        $result = $result->fetch_array();
         $statement->close();
-        if(count($result) === 0)throw new Exception('Username is not exist', 400);
+        if($result == NULL)throw new Exception('Username is not exist', 400);
         
-        $result = $result[0];
-        $userPassword = $result[1];
+        $userPassword = $result['password'];
         if($password !== $userPassword)throw new Exception('Password is incorrect', 400);
         $this->setUserSession($username);
     }
@@ -65,11 +64,11 @@ class UserModel extends Model{
 
     private function setUserSession($username) {
         $userData = $this->getUser($username);
-        $userData = $userData[0];
-        $_SESSION['user_name'] = $userData[0];
-        $_SESSION['user_username'] = $userData[1];
-        $_SESSION['user_email'] = $userData[2];
-        $_SESSION['user_category'] = $userData[3];
+        $_SESSION['user_id'] = $userData['id'];
+        $_SESSION['user_email'] = $userData['email'];
+        $_SESSION['user_username'] = $userData['username'];
+        $_SESSION['user_name'] = $userData['name'];
+        $_SESSION['user_category'] = $userData['category'];
     }
 
     private function createAdmin() {
