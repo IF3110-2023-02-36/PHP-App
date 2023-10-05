@@ -12,7 +12,7 @@
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
     <h1>Welcome to Shop Management</h1>
-    <form action="/product.php" method="get">
+    <form action="/ManageProduct.php" method="get">
         <button type="submit">Manage Products</button>
     </form>
     <form action="/category.php" method="get">

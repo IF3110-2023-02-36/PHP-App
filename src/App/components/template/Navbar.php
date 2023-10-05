@@ -20,6 +20,7 @@ $title = str_replace('.php', '', $title);
             <!-- TODO : Remove this when development over  -->
             <li><a href="/Category.php">Category</a></li>
             <li><a href="/AddProduct.php">Add Product</a></li>
+            <li><a href="/Manage.php">Manage</a></li>
 
             <li class="search-bar">
                 <form action="/Search.php" method="GET">
