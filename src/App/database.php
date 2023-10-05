@@ -26,16 +26,17 @@ class Database{
             username varchar(255) UNIQUE NOT NULL,
             name varchar(255) NOT NULL,
             password varchar(255) NOT NULL,
+            description TEXT,
             category ENUM('user', 'admin') NOT NULL
         );");
         $this->conn->query("CREATE TABLE IF NOT EXISTS categories(
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(255) NOT NULL
+            name VARCHAR(255) UNIQUE NOT NULL
         );");
         $this->conn->query("CREATE TABLE IF NOT EXISTS products(
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
             category_id INTEGER,
-            name VARCHAR(255) NOT NULL,
+            name VARCHAR(255) UNIQUE NOT NULL,
             description TEXT,
             price INTEGER NOT NULL,
             stock INTEGER NOT NULL, 
@@ -52,7 +53,7 @@ class Database{
         $this->conn->query("CREATE TABLE IF NOT EXISTS product_files(
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
             product_id INTEGER,
-            file_name varchar(255) NOT NULL,
+            file_name varchar(255) UNIQUE NOT NULL,
             file_extension varchar(10) NOT NULL,
             FOREIGN KEY (product_id) REFERENCES products(id)
         );");

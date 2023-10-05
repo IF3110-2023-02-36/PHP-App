@@ -27,9 +27,7 @@ class AddProductController extends Controller{
         $product_stock = $_POST["product_stock"];
         
         $productModel = $this->model("ProductModel");
-
-        $succesInsert = $productModel->addProduct($product_category, $product_name, $product_description, $product_price, $product_stock);
-
+        
         $file_name = $_FILES["product_image"]["name"];
         $file_temp = $_FILES["product_image"]["tmp_name"];
         $file_size = $_FILES["product_image"]["size"];
@@ -37,7 +35,7 @@ class AddProductController extends Controller{
         
         $file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
         $allowed_extensions = array("jpg", "jpeg", "png", "gif");
-
+        
         $succesFile = false;
         if (in_array($file_extension, $allowed_extensions)) {
             if ($file_error === 0) {
@@ -53,23 +51,25 @@ class AddProductController extends Controller{
 
                 $executeOk = move_uploaded_file($file_temp, $target_path);
 
-                // echo $product_name;
-                $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
+                if (!$executeOk) {
+                    throw new Exception('File upload failed', 400);
+                } 
 
-                // var_dump($product_id);
+                $succesInsert = $productModel->addProduct($product_category, $product_name, $product_description, $product_price, $product_stock);
+                
+                $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
 
                 $product_file_model = $this->model("ProductFileModel");
 
                 $executeOkDb = $product_file_model->addProductFile($product_id['id'], $unique_filename, $file_extension);
 
-                if (!$executeOk || !$executeOkDb) {
-                    throw new Exception('File upload failed', 400);
+                if (!$executeOkDb || !$succesInsert) {
+                    throw new Exception('Database insertion failed', 400);
                 }
-                else{
-                    $succesFile = true;
-                }
+                $succesFile = true;
             }
         }
+
         if($succesFile && $succesInsert){
             header("Location: /");
         }
