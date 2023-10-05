@@ -41,20 +41,21 @@ class ProductModel extends Model{
         $query = "SELECT * FROM products WHERE id = $id";
         return $this->database->execute($query);
     }
+
+    public function getProductByName($product_name){
+        $query = "SELECT * FROM products WHERE name = '$product_name'";
+        return $this->database->execute($query);
+    }
     public function addProduct($category_id, $name, $description, $price, $stock){
         $stmt = $this->database->getConn()->prepare("INSERT INTO products (category_id, name, description, price, stock) VALUES (?, ?, ?, ?, ?)");
 
         $stmt->bind_param("issii", $category_id, $name, $description, $price, $stock);
     
-    // Menjalankan pernyataan SQL
         if ($stmt->execute()) {
             return true; // Produk berhasil ditambahkan
         } else {
             return false; // Gagal menambahkan produk
         }
-        // $query = "INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `stock`) VALUES (NULL, $category_id, $name, $description, $price, $stock);";
-
-        // return $this->database->execute($query);
     }
 
     public function updateProduct($id, $category_id, $name, $description, $price, $stock){

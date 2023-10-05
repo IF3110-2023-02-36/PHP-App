@@ -53,7 +53,16 @@ class AddProductController extends Controller{
 
                 $executeOk = move_uploaded_file($file_temp, $target_path);
 
-                if (!$executeOk) {
+                // echo $product_name;
+                $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
+
+                // var_dump($product_id);
+
+                $product_file_model = $this->model("ProductFileModel");
+
+                $executeOkDb = $product_file_model->addProductFile($product_id['id'], $unique_filename, $file_extension);
+
+                if (!$executeOk || !$executeOkDb) {
                     throw new Exception('File upload failed', 400);
                 }
                 else{
