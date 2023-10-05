@@ -3,8 +3,11 @@
 class AddProductController extends Controller{
 
     public function index(){
-        $data = []; // TODO : get data kategori dulu
+        $categoryModel = $this->model("CategoryModel");
 
+        $data = $categoryModel->getCategory()->fetch_all();
+
+        // print_r($data);
         $dir = __DIR__;
         $dir = explode("/", $dir);
         $folderName = end($dir);
@@ -18,13 +21,14 @@ class AddProductController extends Controller{
     public function post(){
 
         $product_name = $_POST["product_name"];
+        $product_category = $_POST["product_category"];
         $product_price = $_POST["product_price"];
         $product_description = $_POST["product_description"];
         $product_stock = $_POST["product_stock"];
         
         $productModel = $this->model("ProductModel");
 
-        $productModel->addProduct(1, $product_name, $product_description, $product_price, $product_stock);
+        $succesInsert = $productModel->addProduct($product_category, $product_name, $product_description, $product_price, $product_stock);
 
         $file_name = $_FILES["product_image"]["name"];
         $file_temp = $_FILES["product_image"]["tmp_name"];
@@ -34,6 +38,7 @@ class AddProductController extends Controller{
         $file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
         $allowed_extensions = array("jpg", "jpeg", "png", "gif");
 
+        $succesFile = false;
         if (in_array($file_extension, $allowed_extensions)) {
             if ($file_error === 0) {
                 $upload_directory = __DIR__ . "/../../public/storage/image/";
@@ -51,7 +56,13 @@ class AddProductController extends Controller{
                 if (!$executeOk) {
                     throw new Exception('File upload failed', 400);
                 }
+                else{
+                    $succesFile = true;
+                }
             }
+        }
+        if($succesFile && $succesInsert){
+            header("Location: /");
         }
     }
 }

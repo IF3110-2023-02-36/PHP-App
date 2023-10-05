@@ -18,6 +18,15 @@
         <form action="/AddProduct" method="POST" enctype="multipart/form-data">
             <label for="product_name">Nama Produk:</label>
             <input type="text" id="product_name" name="product_name" required>
+
+            <label for="product_category">Produk Kategori</label>
+            <select name="product_category" id="product_category">
+                <?php 
+                foreach($this->data as $category){
+                    echo"<option value= $category[0]> $category[1]</option>";
+                }
+                ?>
+            </select>
             
             <label for="product_price">Harga Produk:</label>
             <input type="number" id="product_price" name="product_price" required>
