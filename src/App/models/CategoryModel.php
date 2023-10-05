@@ -8,31 +8,22 @@ class CategoryModel extends Model{
     }
 
     public function addCategory($name){
-        $stmt = $this->database->getConn()->prepare("INSERT INTO categories (name) VALUES (?)");
+        $isCategoryExist = $this->checkValueExist("categories", "name", $name);
+        if($isCategoryExist)throw new Exception('Category already exist', 400);
 
+        $stmt = $this->database->getConn()->prepare("INSERT INTO categories (name) VALUES (?)");
         $stmt->bind_param("s", $name);
-    
-    // Menjalankan pernyataan SQL
-        if ($stmt->execute()) {
-            return true; // Produk berhasil ditambahkan
-        } else {
-            return false; // Gagal menambahkan 
-        }
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception("SQL query failed", 400);
     }
 
     public function deleteCategory($id){
         $query = "DELETE FROM categories WHERE id = ?";
 
         $stmt = $this->database->getConn()->prepare($query);
-        var_dump($stmt);
         $stmt->bind_param("i", $id);
-        var_dump($stmt);
-
-        if ($stmt->execute()) {
-            echo "Record deleted successfully.";
-        } else {
-            echo "Error deleting record " ;
-        }
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception("SQL query failed", 400);
     }
 
     public function updateCategory($id, $name){
@@ -40,11 +31,7 @@ class CategoryModel extends Model{
 
         $stmt->bind_param("si", $name, $id);
     
-    // Menjalankan pernyataan SQL
-        if ($stmt->execute()) {
-            return true; // Produk berhasil ditambahkan
-        } else {
-            return false; // Gagal menambahkan produk
-        }
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception("SQL query failed", 400);
     }
 }

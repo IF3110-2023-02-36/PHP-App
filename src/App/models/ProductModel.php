@@ -17,7 +17,6 @@ class ProductModel extends Model{
 
     public function search($query, $data){
         $match = [];
-        // print_r($data);
         foreach ($data as $product){
             if(stristr($product[2], $query)){
                 array_push($match, $product);
@@ -47,34 +46,34 @@ class ProductModel extends Model{
         return $this->database->execute($query);
     }
     public function addProduct($category_id, $name, $description, $price, $stock){
+        $isProductExist = $this->checkValueExist("products", "name", $name);
+        if($isProductExist)throw new Exception('Product already exist', 400);
+
         $stmt = $this->database->getConn()->prepare("INSERT INTO products (category_id, name, description, price, stock) VALUES (?, ?, ?, ?, ?)");
 
         $stmt->bind_param("issii", $category_id, $name, $description, $price, $stock);
-    
-        if ($stmt->execute()) {
-            return true; // Produk berhasil ditambahkan
-        } else {
-            return false; // Gagal menambahkan produk
-        }
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception('Insertion error', 400);
+        return $executeOk;
     }
 
     public function updateProduct($id, $category_id, $name, $description, $price, $stock){
-        $stmt = $this->database->getConn()->prepare("UPDATE products SET category_id = ?, name = ?, description = ?, price = ?, stock = ? WHERE id =$id");
+        $query = "UPDATE products SET category_id = ?, name = ?, description = ?, price = ?, stock = ? WHERE id = ?";
+        $stmt = $this->database->getConn()->prepare($query);
 
-        $stmt->bind_param("issii", $category_id, $name, $description, $price, $stock);
-    
-    // Menjalankan pernyataan SQL
-        if ($stmt->execute()) {
-            return true; // Produk berhasil ditambahkan
-        } else {
-            return false; // Gagal menambahkan produk
-        }
+        $stmt->bind_param("issiii", $category_id, $name, $description, $price, $stock, $id);
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception('Update error', 400);
+        return $executeOk;
     }
 
     public function buy($id, $stock, $buyed){
-        $query = "UPDATE products SET stock = $stock-$buyed WHERE id = $id;";
+        $query = "UPDATE products SET stock = ? - ? WHERE id = ?";
+        $stmt = $this->database->getConn()->prepare($query);
 
-        return $this->database->execute($query);
+        $stmt->bind_param("iii", $stock, $buyed, $id);
+
+        return $stmt->execute();
     }
 
     public function deleteProduct($id){
@@ -82,12 +81,8 @@ class ProductModel extends Model{
 
         $stmt = $this->database->getConn()->prepare($query);
         $stmt->bind_param("i", $id);
-
-        if ($stmt->execute()) {
-            echo "Record deleted successfully.";
-        } else {
-            echo "Error deleting record " ;
-        }
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception('Deletion error', 400);
+        return $executeOk;
     }
-
 }
