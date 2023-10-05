@@ -16,6 +16,7 @@ $routes = array(
     'AddCategory' => "category",
     'EditCategory' => "category",
     'DeleteCategory' => "category",
+    'Profile' => "profile",
 );
 
 
