@@ -9,6 +9,7 @@ $routes = array(
     'Login' => "login",
     'Logout' => "login",
     'Register' => "login",
+    'Manage' => "manage",
     'AddProduct' => "product",
     'Product' => "product",
     'EditProduct' => "product",
