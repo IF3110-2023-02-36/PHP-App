@@ -20,14 +20,7 @@ $title = str_replace('.php', '', $title);
             <!-- TODO : Remove this when development over  -->
             <li><a href="/Category.php">Category</a></li>
             <li><a href="/AddProduct.php">Add Product</a></li>
-            <li><a href="/Manage.php">Manage</a></li>
-
-            <li class="search-bar">
-                <form action="/Search.php" method="GET">
-                    <input type="text" name="query" placeholder="Search...">
-                    <button type="submit">Search</button>
-                </form>
-            </li>
+            <li><a href="/ManageProduct.php">Manage Product</a></li>
 
             <?php if (!$userLoggedIn) : ?>
                 <!-- Display "Register" and "Log in" when not logged in -->

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- global CSS -->
     <link rel="stylesheet" href="../../public/styles/product/ProductCard.css">
     <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
+    <link rel="stylesheet" href="../../public/styles/manage/Manage.css">
     <title>Home Page</title>
 </head>
 
@@ -17,7 +17,7 @@
     ?>
     <span class="background">
         <span class="centering">
-            <h><?php if(isset($_SESSION['user_name']))echo "Halo " . $_SESSION['user_name'];?></h>
+            <button type="button" onclick="window.location.href = '/AddProduct'">Add Product</button>
             <h1>Admin</h1>
             <h2>List barang jualan mu</h2>
             <section class="articles">

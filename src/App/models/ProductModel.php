@@ -106,16 +106,17 @@ class ProductModel extends Model{
     }
 
     public function deleteProduct($id){
-        $query = "DELETE FROM products WHERE id = ?";
-
+        $query = "DELETE FROM product_files WHERE product_id = ?";
         $stmt = $this->database->getConn()->prepare($query);
         $stmt->bind_param("i", $id);
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception('File deletion error', 400);
 
-        if ($stmt->execute()) {
-            echo "Record deleted successfully.";
-        } else {
-            echo "Error deleting record " ;
-        }
+        $query = "DELETE FROM products WHERE id = ?";
+        $stmt = $this->database->getConn()->prepare($query);
+        $stmt->bind_param("i", $id);
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception('Deletion error', 400);
     }
 
 }

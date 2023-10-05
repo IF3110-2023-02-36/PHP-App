@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
-    <title>Tambah Produk</title>
+    <title>Edit Produk</title>
     <link rel="stylesheet" href="../../public/styles/product/addProduct.css"> 
 </head>
 <body>
@@ -45,7 +45,10 @@
             <label for="product_image">Gambar Produk:</label>
             <input type="file" id="product_image" name="product_image" accept="image/*" >
             
-            <button type="submit">edit Produk</button>
+            <button type="submit">Edit Produk</button>
+        </form>
+        <form method="POST" action="/DeleteProduct.php/<?= $this->data['data_product']['id'] ?>">
+            <button type="submit">Hapus Produk</button>
         </form>
     </div>
 </body>
