@@ -1,0 +1,67 @@
+/* Profile.css */
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    font-family: sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.009375rem;
+    background-color: #fafafa;
+    color: rgba(0 0 0 / 87%);
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    letter-spacing: 0;
+    text-wrap: balance;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 0;
+    text-wrap: balance;
+}
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    max-width: 832px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    opacity: 0.8;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #121212;
+        color: rgba(255 255 255 / 87%);
+    }
+
+    td {
+        border-color: #222;
+    }
+}

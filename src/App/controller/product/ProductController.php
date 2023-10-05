@@ -6,7 +6,16 @@ class ProductController extends Controller{
     public function index($id){
         $productModel = $this->model("ProductModel");
 
-        $data = $productModel->getProductById($id)->fetch_assoc();
+        $product = $productModel->getProductById($id)->fetch_assoc();
+
+        $productFileModel = $this->model("ProductFileModel");
+
+        $productFile = $productFileModel->getProductFile($id)->fetch_assoc();
+
+        $data = [
+            'product' => $product,
+            'productFile' => $productFile
+        ];
 
         $dir = __DIR__;
         $dir = explode("/", $dir);

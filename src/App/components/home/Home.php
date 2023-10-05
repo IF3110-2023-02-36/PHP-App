@@ -24,14 +24,21 @@
                 <?php
                 include_once(dirname(__DIR__) . "/template/ProductCard.php");
                 
-                foreach($this->data as $product){
-                    product_card_template(
-                    "https://vnn-imgs-a1.vgcloud.vn/toquoc.mediacdn.vn/280518851207290880/2022/9/25/iphone-15-ultra-7-16640892704142065627851.jpg",
-                    $product[2],
-                    $product[4],
-                    $product[3],
-                    "AIPONG",
-                    $product[0]);
+                foreach($this->data['product'] as $product){
+                    foreach($this->data['productFile'] as $productFile){
+                        if($product[0] == $productFile[1]){
+                            $path = '../../public/storage/image/'. $productFile[2];
+                            product_card_template(
+                                $path,
+                                $product[2],
+                                $product[4],
+                                $product[3],
+                                "AIPONG",
+                                $product[0]);
+                            break;
+                        }
+                    }
+                    
                 }
                 ?>
             </section>
