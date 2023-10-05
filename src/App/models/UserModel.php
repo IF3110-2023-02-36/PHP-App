@@ -31,6 +31,19 @@ class UserModel extends Model{
         return $result;
     }
 
+    public function getUserById($id) {
+        $query = 'SELECT * FROM users WHERE id = ? LIMIT 1';
+        $statement = $this->database->getConn()->prepare($query);
+        $statement->bind_param("i", $id);
+        $executeOk = $statement->execute();
+        if(!$executeOk)return NULL;
+        $result= $statement->get_result();
+        if(!$result)return NULL;
+        $result = $result->fetch_array();
+        $statement->close();
+        return $result;
+    }
+
     public function loginUser($username, $password) {
         $query = 'SELECT username, password FROM users WHERE username = ? LIMIT 1';
         $statement = $this->database->getConn()->prepare($query);
@@ -63,13 +76,16 @@ class UserModel extends Model{
         $this->setUserSession($username);
     }
 
+    public function getCurrentUser() {
+        if(!isset($_SESSION['user_id'])) {
+            throw new Exception('User not logged in', 405);
+        }
+        return $this->getUserById($_SESSION['user_id']);
+    }
+
     private function setUserSession($username) {
         $userData = $this->getUser($username);
         $_SESSION['user_id'] = $userData['id'];
-        $_SESSION['user_email'] = $userData['email'];
-        $_SESSION['user_username'] = $userData['username'];
-        $_SESSION['user_name'] = $userData['name'];
-        $_SESSION['user_category'] = $userData['category'];
     }
 
     private function createAdmin() {

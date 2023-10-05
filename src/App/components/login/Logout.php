@@ -1,3 +1,3 @@
 <?php
-unset($_SESSION['user_username']);
+unset($_SESSION['user_id']);
 header("location: /");

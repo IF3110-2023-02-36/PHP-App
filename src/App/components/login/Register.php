@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION["user_username"])) {
+if (isset($_SESSION["user_id"])) {
   header("location: /");
 }
 ?>
@@ -22,12 +22,13 @@ if (isset($_SESSION["user_username"])) {
         <div>
             <label for="name">Name</label>
             <input type="text" name="name" placeholder="Name" id="name">
+        </div>
         <div>
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="Username" id="username">
         </div>
         <div>
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" id="email">
         </div>
         <div>
