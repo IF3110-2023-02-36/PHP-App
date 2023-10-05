@@ -9,6 +9,34 @@ class ProductModel extends Model{
         return $this->database->execute($query);
     }
 
+    public function getProductRequested($q, $sortVar, $order, $category_id, $minPrice = null, $maxPrice = null){
+        $query = "SELECT * FROM products WHERE 1=1";
+    
+        if (!empty($q)) {
+            $query .= " AND name LIKE '%$q%'";
+        }
+    
+        if (!empty($category)) {
+            $query .= " AND category_id = $category_id";
+        }
+    
+        if (!is_null($minPrice)) {
+            $query .= " AND price >= $minPrice";
+        }
+        if (!is_null($maxPrice)) {
+            $query .= " AND price <= $maxPrice";
+        }
+    
+        $query .= " ORDER BY $sortVar $order";
+    
+        // Eksekusi kueri SQL
+        $result = $this->database->execute($query);
+    
+        // Mengembalikan hasil kueri
+        return $result;
+    }
+    
+
     public function getSortedProduct($column){
         $query = "SELECT * FROM products ORDER BY $column ASC";
 
