@@ -4,7 +4,17 @@ class HomeController extends Controller{
     public function index() {
         $productModel = $this->model("ProductModel");
 
-        $data = $productModel->getAllProduct()->fetch_all();
+        $product = $productModel->getAllProduct()->fetch_all();
+
+        $productFileModel = $this->model("ProductFileModel");
+
+        $productFile = $productFileModel->getAllProductFile()->fetch_all();
+
+        $data = [
+            "product" => $product,
+            "productFile" => $productFile
+        ];
+
 
         $dir = __DIR__;
         $dir = explode("/", $dir);
