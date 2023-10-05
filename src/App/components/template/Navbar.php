@@ -2,21 +2,21 @@
 $userLoggedIn = isset($_SESSION['user_id']);
 $userIsAdmin = false;
 
-if($userLoggedIn) {
+if ($userLoggedIn) {
     require_once __DIR__ . '../../../models/UserModel.php';
     $userModel = new UserModel();
     $userData = $userModel->getCurrentUser();
     $userIsAdmin = $userData['category'] === 'admin';
 }
 
-$title = ""; // TODO : get current page title
+$title = basename($_SERVER['PHP_SELF']);
+$title = str_replace('.php', '', $title);
 ?>
 
 <header>
     <nav id="site-menu">
         <ul>
-            <li <?php if ($title == "home") echo 'aria-current="page"'; ?>><a href="/">Home</a></li>
-            
+            <li <?php if ($title == "index") echo 'aria-current="page"'; ?>><a href="/">Home</a></li>
             <!-- TODO : Remove this when development over  -->
             <li><a href="/Category.php">Category</a></li>
             <li><a href="/AddProduct.php">Add Product</a></li>
@@ -34,13 +34,13 @@ $title = ""; // TODO : get current page title
                 <li><a href="/Register.php">Register</a></li>
             <?php elseif ($userLoggedIn && !$userIsAdmin) : ?>
                 <!-- Display "Cart", "Profile", and "Log out" when logged in as a user -->
-                <li <?php if ($title == "cart") echo 'aria-current="page"'; ?>><a href="/Cart.php">Cart</a></li>
-                <li <?php if ($title == "profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
+                <li <?php if ($title == "Cart") echo 'aria-current="page"'; ?>><a href="/Cart.php">Cart</a></li>
+                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
                 <li><a href="/Logout.php">Log out</a></li>
             <?php elseif ($userLoggedIn && $userIsAdmin) : ?>
                 <!-- Display "Manage Store", "Profile", and "Log out" when logged in as admin -->
                 <li><a href="/Manage.php">Manage</a></li>
-                <li <?php if ($title == "profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
+                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
                 <li><a href="/Logout.php">Log out</a></li>
             <?php endif; ?>
         </ul>
