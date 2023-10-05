@@ -16,23 +16,23 @@ class ProductModel extends Model{
             $query .= " AND name LIKE '%$q%'";
         }
     
-        if (!empty($category)) {
+        if (!empty($category_id)) {
             $query .= " AND category_id = $category_id";
         }
     
-        if (!is_null($minPrice)) {
+        if (!empty($minPrice)) {
             $query .= " AND price >= $minPrice";
         }
-        if (!is_null($maxPrice)) {
+        if (!empty($maxPrice)) {
             $query .= " AND price <= $maxPrice";
         }
+        if(!empty($sortVar)){
+            $query .= " ORDER BY $sortVar $order";
+        }
+        
     
-        $query .= " ORDER BY $sortVar $order";
-    
-        // Eksekusi kueri SQL
         $result = $this->database->execute($query);
     
-        // Mengembalikan hasil kueri
         return $result;
     }
     
@@ -45,6 +45,7 @@ class ProductModel extends Model{
 
     public function search($query, $data){
         $match = [];
+        // print_r($data);
         foreach ($data as $product){
             if(stristr($product[2], $query)){
                 array_push($match, $product);
@@ -74,34 +75,34 @@ class ProductModel extends Model{
         return $this->database->execute($query);
     }
     public function addProduct($category_id, $name, $description, $price, $stock){
-        $isProductExist = $this->checkValueExist("products", "name", $name);
-        if($isProductExist)throw new Exception('Product already exist', 400);
-
         $stmt = $this->database->getConn()->prepare("INSERT INTO products (category_id, name, description, price, stock) VALUES (?, ?, ?, ?, ?)");
 
         $stmt->bind_param("issii", $category_id, $name, $description, $price, $stock);
-        $executeOk = $stmt->execute();
-        if(!$executeOk)throw new Exception('Insertion error', 400);
-        return $executeOk;
+    
+        if ($stmt->execute()) {
+            return true; // Produk berhasil ditambahkan
+        } else {
+            return false; // Gagal menambahkan produk
+        }
     }
 
     public function updateProduct($id, $category_id, $name, $description, $price, $stock){
-        $query = "UPDATE products SET category_id = ?, name = ?, description = ?, price = ?, stock = ? WHERE id = ?";
-        $stmt = $this->database->getConn()->prepare($query);
+        $stmt = $this->database->getConn()->prepare("UPDATE products SET category_id = ?, name = ?, description = ?, price = ?, stock = ? WHERE id =$id");
 
-        $stmt->bind_param("issiii", $category_id, $name, $description, $price, $stock, $id);
-        $executeOk = $stmt->execute();
-        if(!$executeOk)throw new Exception('Update error', 400);
-        return $executeOk;
+        $stmt->bind_param("issii", $category_id, $name, $description, $price, $stock);
+    
+    // Menjalankan pernyataan SQL
+        if ($stmt->execute()) {
+            return true; // Produk berhasil ditambahkan
+        } else {
+            return false; // Gagal menambahkan produk
+        }
     }
 
     public function buy($id, $stock, $buyed){
-        $query = "UPDATE products SET stock = ? - ? WHERE id = ?";
-        $stmt = $this->database->getConn()->prepare($query);
+        $query = "UPDATE products SET stock = $stock-$buyed WHERE id = $id;";
 
-        $stmt->bind_param("iii", $stock, $buyed, $id);
-
-        return $stmt->execute();
+        return $this->database->execute($query);
     }
 
     public function deleteProduct($id){
@@ -109,8 +110,12 @@ class ProductModel extends Model{
 
         $stmt = $this->database->getConn()->prepare($query);
         $stmt->bind_param("i", $id);
-        $executeOk = $stmt->execute();
-        if(!$executeOk)throw new Exception('Deletion error', 400);
-        return $executeOk;
+
+        if ($stmt->execute()) {
+            echo "Record deleted successfully.";
+        } else {
+            echo "Error deleting record " ;
+        }
     }
+
 }
