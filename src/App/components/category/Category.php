@@ -11,7 +11,6 @@
 </head>
 <body>
 <?php
-    $current_page = "Kategori";
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 

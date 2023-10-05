@@ -12,7 +12,6 @@
 
 <body>
     <?php
-    $current_page = "Home";
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
     <span class="background">

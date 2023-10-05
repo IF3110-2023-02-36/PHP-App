@@ -9,7 +9,6 @@
 </head>
 <body>
     <?php
-    $current_page = "Tambah Produk";
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 

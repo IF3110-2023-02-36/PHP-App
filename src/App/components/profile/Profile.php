@@ -12,7 +12,6 @@
 
 <body>
     <?php
-    $current_page = "Profile";
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
     <main>

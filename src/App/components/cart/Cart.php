@@ -11,7 +11,6 @@
 
 <body>
     <?php
-    $current_page = "Cart";
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 
