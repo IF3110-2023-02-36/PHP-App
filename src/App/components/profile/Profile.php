@@ -20,18 +20,23 @@
         <table>
             <tr>
                 <th>Username</th>
-                <!-- <td><?php echo $data['username'] ?></td> -->
-                <td>foo</td>
+                <td><?php echo $this->data['username'] ?></td>
             </tr>
             <tr>
                 <th>Email</th>
-                <!-- <td><?php echo $data['email'] ?></td> -->
-                <td>foo@bar.com</td>
+                <td><?php echo $this->data['email'] ?></td>
             </tr>
             <tr>
                 <th>Name</th>
-                <!-- <td><?php echo $data['name'] ?></td> -->
-                <td>Foo Bar</td>
+                <td><?php echo $this->data['name'] ?></td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td><?php echo $this->data['category'] ?></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><?php echo $this->data['description'] ?></td>
             </tr>
         </table>
     </main>

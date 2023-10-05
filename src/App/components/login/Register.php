@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION["user_username"])) {
+if (isset($_SESSION["user_id"])) {
   header("location: /");
 }
 ?>
