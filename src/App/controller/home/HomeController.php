@@ -1,20 +1,53 @@
 <?php
 
 class HomeController extends Controller{
-    public function index() {
+    public function index(){
+        $this->loadSearch();
+    }
+
+    public function post(){
+        $this->loadSearch();
+    }
+
+    private function loadSearch() {
+        $query = "";
+        $sortVar = "";
+        $order = null;
+        $category_id = null;
+        $minPrice = null;
+        $maxPrice = null;
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $query = $_POST['search'];
+            $sortVar = $_POST['sort'];
+            $order = $_POST['order'];
+            $category_id = $_POST['category'];
+            $minPrice = $_POST['min-price'];
+            $maxPrice = $_POST['max-price'];
+        }
+        
         $productModel = $this->model("ProductModel");
 
-        $product = $productModel->getAllProduct()->fetch_all();
+        $product = $productModel->getProductRequested($query, $sortVar, $order, $category_id, $minPrice, $maxPrice)->fetch_all();
 
         $productFileModel = $this->model("ProductFileModel");
 
         $productFile = $productFileModel->getAllProductFile()->fetch_all();
 
+        $categoryModel = $this->model("CategoryModel");
+
+        $category = $categoryModel->getCategory()->fetch_all();
         $data = [
             "product" => $product,
-            "productFile" => $productFile
-        ];
+            "productFile" => $productFile,
+            "category" => $category,
 
+            "search" => $query,
+            "sort" => $sortVar,
+            "order" => $order,
+            "category_id" => $category_id,
+            "min-price" => $minPrice,
+            "max-price" => $maxPrice
+        ];
 
         $dir = __DIR__;
         $dir = explode("/", $dir);
