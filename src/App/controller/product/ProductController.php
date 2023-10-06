@@ -10,8 +10,9 @@ class ProductController extends Controller{
 
         $productFileModel = $this->model("ProductFileModel");
 
-        $productFile = $productFileModel->getProductFile($id)->fetch_assoc();
+        $productFile = $productFileModel->getProductFile($id)->fetch_all();
 
+        var_dump($productFile);
         $data = [
             'product' => $product,
             'productFile' => $productFile
