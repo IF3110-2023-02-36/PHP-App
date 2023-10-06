@@ -7,6 +7,7 @@
     <!-- global CSS -->
     <link rel="stylesheet" href="../../public/styles/product/ProductCard.css">
     <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
+    <script src="../../public/scripts/functions/debounce.js"></script>
     <title>Home Page</title>
 </head>
 
@@ -15,9 +16,9 @@
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 
-    <form action="" method="POST">
+    <form id="form" action="" method="POST" >
         <label for="search">Search</label>
-        <input type="text" name="search" placeholder="Search" 
+        <input type="text" name="search" id="search" placeholder="Search" 
                 value="<?= $this->data['search'] ?>">
 
         <label for="sort">Sort by</label>
@@ -42,7 +43,7 @@
         </select>
 
         <label for="category">Category</label>
-        <select name="category" id="">
+        <select name="category" id="category">
             <option value=''></option>
             <?php 
                 foreach($this->data['category'] as $category){
@@ -56,12 +57,10 @@
         </select>
 
         <label for="min-price">Min Price:</label>
-        <input type="number" name="min-price" value=<?= $this->data['min-price']?>>
+        <input type="number" name="min-price" id="min-price" value=<?= $this->data['min-price']?>>
     
         <label for="max-price">Max Price:</label>
-        <input type="number" name="max-price" value=<?= $this->data['max-price']?>>
-
-        <button type="submit">search</button>
+        <input type="number" name="max-price" id="max-price" value=<?= $this->data['max-price']?>>
     </form>
 
     <span class="background">
@@ -92,5 +91,5 @@
         </span>
     </span>
 </body>
-
 </html>
+<script src="../../public/scripts/home/search.js"></script>
