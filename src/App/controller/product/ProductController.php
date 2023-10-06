@@ -4,6 +4,10 @@
 
 class ProductController extends Controller{
     public function index($id){
+        if($this->userRole !== 1) {
+            throw new Exception("You are not allowed to view this page", 405);
+        }
+        
         $productModel = $this->model("ProductModel");
 
         $product = $productModel->getProductById($id)->fetch_assoc();
@@ -12,7 +16,6 @@ class ProductController extends Controller{
 
         $productFile = $productFileModel->getProductFile($id)->fetch_all();
 
-        var_dump($productFile);
         $data = [
             'product' => $product,
             'productFile' => $productFile

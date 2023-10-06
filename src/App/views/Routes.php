@@ -6,9 +6,10 @@ $folders = scandir($componentDir);
 unset($folders[0]);
 unset($folders[1]);
 $routes = array();
+$skipRouting = array("Controller.php", "function");
 foreach ($folders as $folderName) {
     $folderDir = $componentDir . "/$folderName";
-    if($folderName === "Controller.php") continue;
+    if(in_array($folderName, $skipRouting))continue;
     $files = scandir($folderDir);
     unset($files[0]);
     unset($files[1]);

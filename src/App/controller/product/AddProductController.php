@@ -3,6 +3,10 @@
 class AddProductController extends Controller{
 
     public function index(){
+        if($this->userRole !== 2) {
+            throw new Exception("You are not allowed to view this page", 405);
+        }
+        
         $categoryModel = $this->model("CategoryModel");
 
         $data = $categoryModel->getCategory()->fetch_all();
@@ -19,6 +23,9 @@ class AddProductController extends Controller{
     }
 
     public function post(){
+        if($this->userRole !== 2) {
+            throw new Exception("You are not allowed to view this page", 405);
+        }
 
         $product_name = $_POST["product_name"];
         $product_category = $_POST["product_category"];

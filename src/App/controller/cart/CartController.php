@@ -2,6 +2,10 @@
 
 class CartController extends Controller {
     public function index() {
+        if($this->userRole !== 1) {
+            throw new Exception("You are not allowed to view this page", 405);
+        }
+
         $cartModel = $this->model("CartModel");
         $cart = $cartModel->getUserCart($_SESSION['user_id']);
         

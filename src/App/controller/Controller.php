@@ -2,8 +2,12 @@
 
 
 class Controller{
+    protected $userRole;
     public function __construct() {
         require_once __DIR__ . "../../views/Routes.php";
+        require_once __DIR__ . "../../controller/function/getUserRole.php";
+
+        $this->userRole = getUserRole();
     }
 
     public function view($folder, $filename, $data = []) {

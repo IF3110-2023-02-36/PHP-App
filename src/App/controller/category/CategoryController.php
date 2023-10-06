@@ -2,6 +2,10 @@
 
 class CategoryController extends Controller{
     public function index(){
+        if($this->userRole !== 2) {
+            throw new Exception("You are not allowed to view this page", 405);
+        }
+        
         $categoryModel = $this->model("CategoryModel");
 
         $data = $categoryModel->getCategory()->fetch_all();

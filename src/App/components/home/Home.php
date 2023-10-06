@@ -7,6 +7,7 @@
     <!-- global CSS -->
     <link rel="stylesheet" href="../../public/styles/product/ProductCard.css">
     <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
+    <link rel="stylesheet" href="../../public/styles/home/Home.css">
     <script src="../../public/scripts/functions/debounce.js"></script>
     <title>Home Page</title>
 </head>
@@ -65,11 +66,22 @@
 
     <span class="background">
         <span class="centering">
-            <h1>Search</h1>
+            <?php
+            include_once(dirname(__DIR__) . "/template/ProductCard.php");
+            if($this->userRole === 2) {
+                echo "
+                <h1>Shop Management</h1>
+                <h2>List barang jualan mu</h2>
+                <button type='button' onclick=\"window.location.href = '/AddProduct'\">Add Product</button>
+                ";
+            }else {
+                echo "
+                <h1>Search</h1>
+                ";
+            }
+            ?>
             <section class="articles">
                 <?php
-                include_once(dirname(__DIR__) . "/template/ProductCard.php");
-                
                 foreach($this->data['product'] as $product){
                     foreach($this->data['productFile'] as $productFile){
                         if($product[0] == $productFile[1]){
@@ -79,11 +91,11 @@
                                 $product[2],
                                 $product[4],
                                 $product[3],
-                                $product[0]);
+                                $product[0],
+                                $this->userRole === 2);
                             break;
                         }
                     }
-                    
                 }
                 ?>
             </section>
