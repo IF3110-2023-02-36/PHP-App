@@ -26,4 +26,17 @@ class ProductFileModel extends Model{
         if(!$executeOk)throw new Exception('Insertion error', 400);
         return $executeOk;
     }
+
+    public function editProductFile($product_file_id, $file_name, $file_extension){
+        $stmt = $this->database->getConn()->prepare("UPDATE product_files SET file_name = ?, file_extension = ? WHERE id = $product_file_id");
+
+        $stmt->bind_param("ss", $file_name, $file_extension);
+    
+    // Menjalankan pernyataan SQL
+        if ($stmt->execute()) {
+            return true; // Produk berhasil ditambahkan
+        } else {
+            return false; // Gagal menambahkan produk
+        }
+    }
 }
