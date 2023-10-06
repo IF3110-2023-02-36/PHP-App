@@ -25,8 +25,8 @@
         </thead>
         <tbody>
             <?php
-                $i = 1;
-                foreach ($this->data as $category){
+                $i = ($this->data["page"] - 1) * $this->data["pageLimit"] + 1;
+                foreach ($this->data["pageData"] as $category){
                     echo 
                     "
                     <tr>
@@ -44,7 +44,7 @@
         </tbody>
     </table>
     <main>
-        <form action="AddCategory.php" method="POST">
+        <form action="/AddCategory.php" method="POST">
             <label for="category_name">Nama Kategori:</label>
             <input type="text" id="category_name" name="category_name" required>
             <button type="submit">Tambah Kategori</button>
@@ -53,4 +53,9 @@
    
 
 </body>
+<?php
+include(dirname(__DIR__) . '/template/Pagination.php');
+echo pagination_template("Category", $this->data["data"], $this->data["page"], $this->data["pageLimit"]);
+?>
+
 </html>
