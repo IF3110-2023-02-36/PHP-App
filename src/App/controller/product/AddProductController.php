@@ -133,7 +133,7 @@ class AddProductController extends Controller{
         }
 
         if($succesFile && $succesInsert){
-            header("Location: /ManageProduct");
+            header("Location: /");
         }
     }
 }
