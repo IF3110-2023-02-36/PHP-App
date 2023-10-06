@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
     <link rel="stylesheet" href="../../public/styles/cart/cart.css"> <!-- Add a separate CSS file for cart styles -->
     <title>Shopping Cart</title>
+    <script src="../../public/scripts/Cart/cart.js"></script>
 </head>
 
 <body>
@@ -23,19 +24,24 @@
                 $cartTable = "";
                 foreach ($this->data["cart"] as $item) {
                     $itemDetail = $this->data['cartItems'][$item['product_id']];
+                    $productFile = $this->data['productFileModel']->getProductFile($itemDetail['id'])->fetch_assoc();
                     $total = $itemDetail['price'] * $item['quantity'];
+                    $imagePath = '../../public/storage/image/'. $productFile['file_name'];
                     $cartTable .= 
                     "
                     <tr>
+                        <td>
+                            <img src='{$imagePath}' alt='Product Image' style='width:200px;height:250px;'>
+                        </td>
                         <td>{$itemDetail['name']}</td>
                         <td>Rp {$itemDetail['price']}</td>
                         <td>
-                            <input type='number' class='quantity-input' min='1' value='{$item['quantity']}'>
+                            <input type='number' class='quantity-input' min='1' value='{$item['quantity']}' data-product-id='{$itemDetail['id']}'>
                         </td>
                         <td>Rp $total</td>
                         <td>
-                            <button class='update-cart-btn'>Update</button>
-                            <button class='remove-from-cart-btn'>Remove</button>
+                            <button class='update-cart-btn' onclick='updateCart(this)'>Update</button>
+                            <button class='remove-from-cart-btn' onclick='deleteCartItem(this)'>Remove</button>
                         </td>
                     </tr>
                     ";

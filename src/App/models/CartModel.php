@@ -32,6 +32,19 @@ class CartModel extends Model {
         return $stmt->execute();
     }
 
+    public function updateProductFromCart($userId, $productId, $quantity){
+        $stmt = $this->database->getConn()->prepare("UPDATE carts SET quantity = ? WHERE user_id =$userId AND product_id =$productId");
+
+        $stmt->bind_param("i", $quantity);
+    
+    // Menjalankan pernyataan SQL
+        if ($stmt->execute()) {
+            return true; // Produk berhasil ditambahkan
+        } else {
+            return false; // Gagal menambahkan produk
+        }
+    }
+
     public function removeProductFromCart($userId, $productId) {
         $query = "DELETE FROM carts WHERE user_id = ? AND product_id = ?";
 

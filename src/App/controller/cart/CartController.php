@@ -15,9 +15,12 @@ class CartController extends Controller {
             $cartItems[$cartItem['product_id']] = $productModel->getProductById($cartItem['product_id'])->fetch_assoc();
         }
 
+        $productFileModel = $this->model("ProductFileModel");
+    
         $data = [
             "cart" => $cart,
-            "cartItems" => $cartItems
+            "cartItems" => $cartItems,
+            "productFileModel" => $productFileModel
         ];
 
         $dir = __DIR__;
@@ -29,4 +32,6 @@ class CartController extends Controller {
 
         $view->render();
     }
+
+    
 }
