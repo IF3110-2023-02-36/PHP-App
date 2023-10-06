@@ -50,7 +50,7 @@ class AddProductController extends Controller{
         
         $succesFile = false;
         if($pict_error === 4){
-            $pict_extension = "jpeg";
+            $pict_extension = "jpg";
         }
         if (in_array($pict_extension, $allowed_extensions) ) {
             if ($pict_error === 0) {
@@ -114,7 +114,7 @@ class AddProductController extends Controller{
                 $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
                 $product_pict_model = $this->model("ProductFileModel");
                 
-                $executeOkDb = $product_pict_model->addProductFile($product_id['id'], "default.jpeg", "jpeg");
+                $executeOkDb = $product_pict_model->addProductFile($product_id['id'], "default.jpg", "jpg");
                 
                 if (!$executeOkDb || !$succesInsert) {
                     throw new Exception('Database insertion failed', 400);

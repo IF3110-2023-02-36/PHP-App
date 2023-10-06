@@ -1,5 +1,5 @@
 <?php
-function product_card_template($imgsrc, $name, $price, $text, $alttext, $productId, $isManage = False) {
+function product_card_template($imgsrc, $name, $price, $text, $productId, $isManage = False) {
     $hrefPart = "";
     if($isManage) {
         $hrefPart = "<a href='/EditProduct/$productId'>Edit product</a>";
@@ -10,7 +10,7 @@ function product_card_template($imgsrc, $name, $price, $text, $alttext, $product
     $html = <<<"EOT"
     <article>
         <figure>
-            <img src="$imgsrc" alt="$alttext">
+            <img src="$imgsrc" alt="$name">
         </figure>
         <div class="article-preview">
             <h2>$name</h2>

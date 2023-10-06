@@ -79,7 +79,6 @@
                                 $product[2],
                                 $product[4],
                                 $product[3],
-                                $product[2],
                                 $product[0]);
                             break;
                         }
