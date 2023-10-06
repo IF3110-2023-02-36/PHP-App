@@ -83,6 +83,30 @@ class UserModel extends Model{
         return $this->getUserById($_SESSION['user_id']);
     }
 
+    public function changeUser($username, $name, $email, $description) {
+        if(!isset($_SESSION['user_id'])) {
+            throw new Exception('User not logged in', 405);
+        }
+
+        $prevInfo = $this->getUserById($_SESSION['user_id']);
+        if($prevInfo['username'] !== $username) {
+            $isUsernameExist = $this->checkValueExist("users", "username", $username);
+            if($isUsernameExist)throw new Exception('Username already exist', 400);
+        }
+        if($prevInfo['email'] !== $email) {
+            $isEmailExist = $this->checkValueExist("users", "email", $email);
+            if($isEmailExist)throw new Exception('Email already exist', 400);
+        }
+
+        $query = "UPDATE users SET 
+                    username = ?, name = ?, email = ?, description = ?
+                    WHERE id = ?";
+        $statement = $this->database->getConn()->prepare($query);
+        $statement->bind_param("ssssi", $username, $name, $email, $description, $_SESSION['user_id']);
+        $executeOk = $statement->execute();
+        if(!$executeOk)throw new Exception('Edit error', 400);
+    }
+
     private function setUserSession($username) {
         $userData = $this->getUser($username);
         $_SESSION['user_id'] = $userData['id'];

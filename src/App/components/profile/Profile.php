@@ -37,6 +37,13 @@
                 <th>Description</th>
                 <td><?php echo $this->data['description'] ?></td>
             </tr>
+            <tr>
+                <th>
+                    <form method="" action="/EditProfile">
+                        <button type="submit">Edit</button>
+                    </form>
+                </th>
+            </tr>
         </table>
     </main>
 </body>
