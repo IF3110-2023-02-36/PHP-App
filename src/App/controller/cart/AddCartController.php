@@ -6,8 +6,16 @@ class AddCartController extends Controller{
             throw new Exception("You are not allowed to view this page", 405);
         }
 
+        $userId = $_SESSION['user_id'];
+        $quantity = $_POST['quantity'];
+        
         $cartModel = $this->model("CartModel");
-        $cartModel->addProductToCart($_SESSION['user_id'], $productId, $_POST['quantity']);
-        header("Location: /");
+        if($cartModel->isProductInCart($userId, $productId)){
+            echo "Product sudah ada di cart";
+        }else{
+            $cartModel->addProductToCart($userId, $productId, $quantity);
+            header("Location: /");
+        }
+        
     }
 }

@@ -24,6 +24,7 @@
                 $cartTable = "";
                 foreach ($this->data["cart"] as $item) {
                     $itemDetail = $this->data['cartItems'][$item['product_id']];
+                    var_dump($itemDetail);
                     $productFile = $this->data['productFileModel']->getProductFile($itemDetail['id'])->fetch_assoc();
                     $total = $itemDetail['price'] * $item['quantity'];
                     $imagePath = '../../public/storage/image/'. $productFile['file_name'];
@@ -36,7 +37,7 @@
                         <td>{$itemDetail['name']}</td>
                         <td>Rp {$itemDetail['price']}</td>
                         <td>
-                            <input type='number' class='quantity-input' min='1' value='{$item['quantity']}' data-product-id='{$itemDetail['id']}'>
+                            <input type='number' class='quantity-input' min='1' max='{$itemDetail['stock']}' value='{$item['quantity']}' data-product-id='{$itemDetail['id']} '>
                         </td>
                         <td>Rp $total</td>
                         <td>

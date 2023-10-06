@@ -45,6 +45,7 @@ class CartModel extends Model {
         }
     }
 
+
     public function removeProductFromCart($userId, $productId) {
         $query = "DELETE FROM carts WHERE user_id = ? AND product_id = ?";
 
@@ -52,5 +53,15 @@ class CartModel extends Model {
         $stmt->bind_param("ii", $userId, $productId);
 
         return $stmt->execute();
+    }
+
+    public function isProductInCart($user_id, $product_id){
+        $query = "SELECT * FROM carts WHERE user_id = ? AND product_id = ?";
+
+        $stmt = $this->database->getConn()->prepare($query);
+        $stmt->bind_param("ii", $user_id, $product_id);
+        $stmt->execute();
+
+        return sizeof($stmt->get_result()->fetch_all()) > 0;
     }
 }
