@@ -28,46 +28,101 @@ class AddProductController extends Controller{
         
         $productModel = $this->model("ProductModel");
         
-        $file_name = $_FILES["product_image"]["name"];
-        $file_temp = $_FILES["product_image"]["tmp_name"];
-        $file_size = $_FILES["product_image"]["size"];
-        $file_error = $_FILES["product_image"]["error"];
+        $pict_name = $_FILES["product_image"]["name"];
+        $pict_temp = $_FILES["product_image"]["tmp_name"];
+        $pict_size = $_FILES["product_image"]["size"];
+        $pict_error = $_FILES["product_image"]["error"];
+
+        // echo "a".$pict_name;
+        // echo "a".$pict_temp;
+        // echo "a".$pict_size;
+        // echo "a".$pict_error;
         
-        $file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        $allowed_extensions = array("jpg", "jpeg", "png", "gif");
+        $vid_name = $_FILES["product_video"]["name"];
+        $vid_temp = $_FILES["product_video"]["tmp_name"];
+        $vid_size = $_FILES["product_video"]["size"];
+        $vid_error = $_FILES["product_video"]["error"];
+
+        $pict_extension = strtolower(pathinfo($pict_name, PATHINFO_EXTENSION));
+        $vid_extension = strtolower(pathinfo($vid_name, PATHINFO_EXTENSION));
+
+        $allowed_extensions = array("jpg", "jpeg", "png", "gif", "mp4", "mkv");
         
         $succesFile = false;
-        if (in_array($file_extension, $allowed_extensions)) {
-            if ($file_error === 0) {
-                $upload_directory = __DIR__ . "/../../public/storage/image/";
+        if($pict_error === 4){
+            $pict_extension = "jpeg";
+        }
+        if (in_array($pict_extension, $allowed_extensions) ) {
+            if ($pict_error === 0) {
+                $uploadPict_directory = __DIR__ . "/../../public/storage/image/";
 
-                if (!is_dir($upload_directory)) {
-                    mkdir($upload_directory, 0755, true);
+                $uploadVid_directory = __DIR__ . "/../../public/storage/video/";
+
+                if (!is_dir($uploadPict_directory)) {
+                    mkdir($uploadPict_directory, 0755, true);
                 }
 
-                $unique_filename = uniqid() . '.' . $file_extension;
+                if (!is_dir($uploadVid_directory)) {
+                    mkdir($uploadVid_directory, 0755, true);
+                }
 
-                $target_path = $upload_directory . $unique_filename;
+                $uniquePict_filename = uniqid() . '.' . $pict_extension;
 
-                $executeOk = move_uploaded_file($file_temp, $target_path);
+                $target_path = $uploadPict_directory . $uniquePict_filename;
+
+                $executeOk = move_uploaded_file($pict_temp, $target_path);
 
                 if (!$executeOk) {
                     throw new Exception('File upload failed', 400);
                 } 
 
+                //insert pict
                 $succesInsert = $productModel->addProduct($product_category, $product_name, $product_description, $product_price, $product_stock);
                 
                 $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
 
-                $product_file_model = $this->model("ProductFileModel");
+                $product_pict_model = $this->model("ProductFileModel");
 
-                $executeOkDb = $product_file_model->addProductFile($product_id['id'], $unique_filename, $file_extension);
+                $executeOkDb = $product_pict_model->addProductFile($product_id['id'], $uniquePict_filename, $pict_extension);
 
+                //insert video 
+                if($vid_error === 0 && in_array($vid_extension, $allowed_extensions)){
+                    $uniqueVid_filename = uniqid() . '.' . $vid_extension;
+
+                    $target_path = $uploadVid_directory . $uniqueVid_filename;
+
+                    $executeOk = move_uploaded_file($vid_temp, $target_path);
+
+                    if (!$executeOk) {
+                        throw new Exception('File upload failed', 400);
+                    }                 
+    
+                    $product_vid_model = $this->model("ProductFileModel");
+    
+                    $executeOkDb = $product_vid_model->addProductFile($product_id['id'], $uniqueVid_filename, $vid_extension);
+                }
+                
                 if (!$executeOkDb || !$succesInsert) {
                     throw new Exception('Database insertion failed', 400);
                 }
                 $succesFile = true;
             }
+                
+            if($pict_error === 4){
+                $succesInsert = $productModel->addProduct($product_category, $product_name, $product_description, $product_price, $product_stock);
+                
+                $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
+                $product_pict_model = $this->model("ProductFileModel");
+                
+                $executeOkDb = $product_pict_model->addProductFile($product_id['id'], "default.jpeg", "jpeg");
+                
+                if (!$executeOkDb || !$succesInsert) {
+                    throw new Exception('Database insertion failed', 400);
+                }
+                $succesFile = true;
+            }
+            
+            
         }
 
         if($succesFile && $succesInsert){

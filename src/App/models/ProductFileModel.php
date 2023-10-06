@@ -15,8 +15,8 @@ class ProductFileModel extends Model{
     }
 
     public function addProductFile($product_id, $file_name, $file_extension){
-        $isFilenameExist = $this->checkValueExist("product_files", "file_name", $file_name);
-        if($isFilenameExist)throw new Exception('Filename already exist', 400);
+        // $isFilenameExist = $this->checkValueExist("product_files", "file_name", $file_name);
+        // if($isFilenameExist)throw new Exception('Filename already exist', 400);
 
         $stmt = $this->database->getConn()->prepare("INSERT INTO product_files (product_id, file_name, file_extension) VALUES (?, ?, ?)");
 

@@ -53,7 +53,7 @@ class Database{
         $this->conn->query("CREATE TABLE IF NOT EXISTS product_files(
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
             product_id INTEGER,
-            file_name varchar(255) UNIQUE NOT NULL,
+            file_name varchar(255) NOT NULL,
             file_extension varchar(10) NOT NULL,
             FOREIGN KEY (product_id) REFERENCES products(id)
         );");

@@ -37,7 +37,10 @@
             <input type="number" id="product_stock" name="product_stock" required>
             
             <label for="product_image">Gambar Produk:</label>
-            <input type="file" id="product_image" name="product_image" accept="image/*" >
+            <input type="file" id="product_image" name="product_image" accept="image/*">
+
+            <label for="product_video">Video Produk:</label>
+            <input type="file" id="product_video" name="product_video" accept="video/*">
             
             <button type="submit">Tambah Produk</button>
         </form>
