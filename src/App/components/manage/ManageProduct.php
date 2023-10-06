@@ -32,7 +32,6 @@
                                 $product[2],
                                 $product[4],
                                 $product[3],
-                                "AIPONG",
                                 $product[0],
                                 True);
                             break;
