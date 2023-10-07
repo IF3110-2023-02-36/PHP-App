@@ -44,7 +44,8 @@
             
             <label for="product_image">Gambar Produk:</label>
             <div class="product-image">
-                <img src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
+                <img width='450' height='300'  
+                src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
             </div>
             <input type="file" id="product_image" name="product_image" accept="image/*" title="Ganti Produk">
 
@@ -61,6 +62,7 @@
             
             <input type="file" id="product_video" name="product_video" accept="video/*" title="Ganti Produk">
             
+            <br>
             <button type="submit" onclick="return showEditConfirmation()">Edit Produk</button>
         </form >
         <form method="POST" action="/DeleteProduct.php/<?= $this->data['data_product']['id'] ?>">
