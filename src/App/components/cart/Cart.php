@@ -49,9 +49,10 @@
 
                 echo
                 "
-                <table class='cart-items>
+                <table class='cart-items'>
                     <thead>
                         <tr>
+                            <th>Pict</th>
                             <th>Product</th>
                             <th>Price</th>
                             <th>Quantity</th>

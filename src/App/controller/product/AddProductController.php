@@ -94,6 +94,7 @@ class AddProductController extends Controller{
 
                 //insert video 
                 if($vid_error === 0 && in_array($vid_extension, $allowed_extensions)){
+                    echo "masuk";
                     $uniqueVid_filename = uniqid() . '.' . $vid_extension;
 
                     $target_path = $uploadVid_directory . $uniqueVid_filename;
@@ -116,6 +117,12 @@ class AddProductController extends Controller{
             }
                 
             if($pict_error === 4){
+                $uploadVid_directory = __DIR__ . "/../../public/storage/video/";
+
+                if (!is_dir($uploadVid_directory)) {
+                    mkdir($uploadVid_directory, 0755, true);
+                }
+
                 $succesInsert = $productModel->addProduct($product_category, $product_name, $product_description, $product_price, $product_stock);
                 
                 $product_id = $productModel->getProductByName($product_name)->fetch_assoc();
@@ -123,6 +130,23 @@ class AddProductController extends Controller{
                 
                 $executeOkDb = $product_pict_model->addProductFile($product_id['id'], "default.jpg", "jpg");
                 
+                //insert video 
+                if($vid_error === 0 && in_array($vid_extension, $allowed_extensions)){
+                    $uniqueVid_filename = uniqid() . '.' . $vid_extension;
+
+                    $target_path = $uploadVid_directory . $uniqueVid_filename;
+
+                    $executeOk = move_uploaded_file($vid_temp, $target_path);
+
+                    if (!$executeOk) {
+                        throw new Exception('File upload failed', 400);
+                    }                 
+    
+                    $product_vid_model = $this->model("ProductFileModel");
+    
+                    $executeOkDb = $product_vid_model->addProductFile($product_id['id'], $uniqueVid_filename, $vid_extension);
+                }
+
                 if (!$executeOkDb || !$succesInsert) {
                     throw new Exception('Database insertion failed', 400);
                 }
