@@ -17,7 +17,7 @@
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 
-    <form id="form" action="" method="POST" >
+    <form id="form" action="/Home.php" method="POST" >
         <label for="search">Search</label>
         <input type="text" name="search" id="search" placeholder="Search" 
                 value="<?= $this->data['search'] ?>">
@@ -102,5 +102,11 @@
         </span>
     </span>
 </body>
+<?php
+include(dirname(__DIR__) . '/template/Pagination.php');
+echo pagination_template("Home", $this->data["data"], $this->data["page"], $this->data["pageLimit"], "paginateForm");
+?>
+
 </html>
+<script src="../../public/scripts/home/paginateForm.js"></script>
 <script src="../../public/scripts/home/search.js"></script>

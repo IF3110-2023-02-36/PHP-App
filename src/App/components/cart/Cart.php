@@ -24,7 +24,6 @@
                 $cartTable = "";
                 foreach ($this->data["cart"] as $item) {
                     $itemDetail = $this->data['cartItems'][$item['product_id']];
-                    var_dump($itemDetail);
                     $productFile = $this->data['productFileModel']->getProductFile($itemDetail['id'])->fetch_assoc();
                     $total = $itemDetail['price'] * $item['quantity'];
                     $imagePath = '../../public/storage/image/'. $productFile['file_name'];
@@ -74,5 +73,9 @@
     </div>
 
 </body>
+<?php
+include(dirname(__DIR__) . '/template/Pagination.php');
+echo pagination_template("Cart", $this->data["data"], $this->data["page"], $this->data["pageLimit"]);
+?>
 
 </html>

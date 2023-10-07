@@ -1,7 +1,7 @@
 <?php
 
 class CartController extends Controller {
-    public function index() {
+    public function index($page = 1) {
         if($this->userRole !== 1) {
             throw new Exception("You are not allowed to view this page", 405);
         }
@@ -16,9 +16,16 @@ class CartController extends Controller {
         }
 
         $productFileModel = $this->model("ProductFileModel");
+
+        require_once __DIR__ . '/../function/arrayPagination.php';
+        $pageCart = arrayPagination($cart, $page, $this->pageLimit);
     
         $data = [
-            "cart" => $cart,
+            "data" => $cart,
+            "page" => $page,
+            "pageLimit" => $this->pageLimit,
+
+            "cart" => $pageCart,
             "cartItems" => $cartItems,
             "productFileModel" => $productFileModel
         ];

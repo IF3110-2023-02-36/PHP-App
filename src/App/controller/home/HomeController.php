@@ -5,11 +5,11 @@ class HomeController extends Controller{
         $this->loadSearch();
     }
 
-    public function post(){
-        $this->loadSearch();
+    public function post($page = 1){
+        $this->loadSearch($page);
     }
 
-    private function loadSearch() {
+    private function loadSearch($page = 1) {
         $query = "";
         $sortVar = "";
         $order = null;
@@ -36,8 +36,16 @@ class HomeController extends Controller{
         $categoryModel = $this->model("CategoryModel");
 
         $category = $categoryModel->getCategory()->fetch_all();
+
+        
+        require_once __DIR__ . '/../function/arrayPagination.php';
+        $pageProduct = arrayPagination($product, $page, $this->pageLimit);
         $data = [
-            "product" => $product,
+            "data" => $product,
+            "page" => $page,
+            "pageLimit" => $this->pageLimit,
+
+            "product" => $pageProduct,
             "productFile" => $productFile,
             "category" => $category,
 

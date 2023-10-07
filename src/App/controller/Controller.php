@@ -3,7 +3,7 @@
 
 class Controller{
     protected $userRole;
-    protected $pageLimit = 10;
+    protected $pageLimit = 3;
     public function __construct() {
         require_once __DIR__ . "../../views/Routes.php";
         require_once __DIR__ . "../../controller/function/getUserRole.php";

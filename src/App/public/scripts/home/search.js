@@ -1,5 +1,4 @@
 const debounceDelay = 2000;
-let form = document.getElementById('form');
 
 function submitForm() {
     form.submit();
