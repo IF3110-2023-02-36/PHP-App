@@ -10,7 +10,12 @@
 </head>
 
 <body>
+    <div id="checkout-alert"></div>
+
     <?php
+    if($_SERVER["HTTP_REFERER"] == 'http://localhost:8000/Cart.php'){
+        echo '<script>showCheckoutAlert("Checkout successful!");</script>';;
+    }
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 
@@ -67,7 +72,9 @@
         ?>
     <div class="cart-actions">
         <a href="/">Continue Shopping</a>
-        <button class="checkout-btn">Checkout</button>
+        <form action="/Checkout" method="POST">
+            <button class="checkout-btn">Checkout</button>
+        </form>
     </div>
 
 </body>

@@ -100,8 +100,8 @@ class ProductModel extends Model{
         }
     }
 
-    public function buy($id, $stock, $buyed){
-        $query = "UPDATE products SET stock = $stock-$buyed WHERE id = $id;";
+    public function buy($id, $quantity){
+        $query = "UPDATE products SET stock = stock-$quantity WHERE id = $id;";
 
         return $this->database->execute($query);
     }
