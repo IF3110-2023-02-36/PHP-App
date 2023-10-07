@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/styles/product/addProduct.css"> 
     <link rel="stylesheet" href="../../public/styles/Global.css">
+    <script src="../../public/scripts/popup.js"></script>
     <title>Edit Produk</title>
 </head>
 <body>
@@ -60,10 +61,10 @@
             
             <input type="file" id="product_video" name="product_video" accept="video/*" title="Ganti Produk">
             
-            <button type="submit">Edit Produk</button>
-        </form>
+            <button type="submit" onclick="return showEditConfirmation()">Edit Produk</button>
+        </form >
         <form method="POST" action="/DeleteProduct.php/<?= $this->data['data_product']['id'] ?>">
-            <button type="submit">Hapus Produk</button>
+            <button type="submit" onclick="return showDeleteConfirmation()">Hapus Produk</button>
         </form>
     </div>
 </body>
