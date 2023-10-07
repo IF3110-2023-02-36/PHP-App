@@ -10,7 +10,7 @@
     <title>Kategori</title>
 </head>
 <body>
-<?php
+    <?php
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>
 
@@ -51,12 +51,12 @@
             <button type="submit">Tambah Kategori</button>
         </form>
     </main>
-   
-
 </body>
-<?php
-include(dirname(__DIR__) . '/template/Pagination.php');
-echo pagination_template("Category", $this->data["data"], $this->data["page"], $this->data["pageLimit"]);
-?>
+<span class="centering">
+    <?php
+    include(dirname(__DIR__) . '/template/Pagination.php');
+    echo pagination_template("Category", $this->data["data"], $this->data["page"], $this->data["pageLimit"]);
+    ?>
+</span>
 
 </html>

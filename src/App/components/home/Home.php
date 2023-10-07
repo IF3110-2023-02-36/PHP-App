@@ -101,11 +101,11 @@
             </section>
         </span>
     </span>
+    <?php
+    include(dirname(__DIR__) . '/template/Pagination.php');
+    echo pagination_template("Home", $this->data["data"], $this->data["page"], $this->data["pageLimit"], "paginateForm");
+    ?>
 </body>
-<?php
-include(dirname(__DIR__) . '/template/Pagination.php');
-echo pagination_template("Home", $this->data["data"], $this->data["page"], $this->data["pageLimit"], "paginateForm");
-?>
 
 </html>
 <script src="../../public/scripts/home/paginateForm.js"></script>

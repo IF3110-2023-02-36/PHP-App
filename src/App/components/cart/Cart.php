@@ -68,7 +68,7 @@
             }
             ?>
         <div class="cart-actions">
-            <a href="/products">Continue Shopping</a>
+            <a href="/">Continue Shopping</a>
             <button class="checkout-btn">Checkout</button>
         </div>
     </div>

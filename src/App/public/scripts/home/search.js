@@ -1,4 +1,4 @@
-const debounceDelay = 2000;
+const debounceDelay = 750;
 
 function submitForm() {
     form.submit();
