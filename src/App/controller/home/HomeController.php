@@ -37,9 +37,11 @@ class HomeController extends Controller{
 
         $category = $categoryModel->getCategory()->fetch_all();
 
+
         
         require_once __DIR__ . '/../function/arrayPagination.php';
         $pageProduct = arrayPagination($product, $page, $this->pageLimit);
+
         $data = [
             "data" => $product,
             "page" => $page,

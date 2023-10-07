@@ -7,6 +7,10 @@ class DeleteCategoryController extends Controller{
         }
 
         $id = $_POST["category_id"];
+
+        $productModel = $this->model("ProductModel");
+        $productModel->deleteProductByCategory($id);
+
         $categoryModel = $this->model("CategoryModel");
         $categoryModel->deleteCategory($id);
     }

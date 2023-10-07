@@ -94,7 +94,6 @@ class AddProductController extends Controller{
 
                 //insert video 
                 if($vid_error === 0 && in_array($vid_extension, $allowed_extensions)){
-                    echo "masuk";
                     $uniqueVid_filename = uniqid() . '.' . $vid_extension;
 
                     $target_path = $uploadVid_directory . $uniqueVid_filename;

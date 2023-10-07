@@ -74,6 +74,7 @@ class ProductModel extends Model{
         $query = "SELECT * FROM products WHERE name = '$product_name'";
         return $this->database->execute($query);
     }
+
     public function addProduct($category_id, $name, $description, $price, $stock){
         $stmt = $this->database->getConn()->prepare("INSERT INTO products (category_id, name, description, price, stock) VALUES (?, ?, ?, ?, ?)");
 
@@ -106,6 +107,12 @@ class ProductModel extends Model{
     }
 
     public function deleteProduct($id){
+        $query = "DELETE FROM carts WHERE product_id = ?";
+        $stmt = $this->database->getConn()->prepare($query);
+        $stmt->bind_param("i", $id);
+        $executeOk = $stmt->execute();
+        if(!$executeOk)throw new Exception('Cart deletion error', 400);
+
         $query = "DELETE FROM product_files WHERE product_id = ?";
         $stmt = $this->database->getConn()->prepare($query);
         $stmt->bind_param("i", $id);
@@ -117,6 +124,18 @@ class ProductModel extends Model{
         $stmt->bind_param("i", $id);
         $executeOk = $stmt->execute();
         if(!$executeOk)throw new Exception('Deletion error', 400);
+    }
+
+    public function deleteProductByCategory($category_id){
+        $products = $this->getProductByCategory($category_id)->fetch_all();
+
+        foreach($products as $product){
+            $this->deleteProduct($product[0]);
+        }
+    }
+    public function getProductByCategory($category_id){
+        $query = "SELECT * FROM products WHERE category_id = '$category_id'";
+        return $this->database->execute($query);
     }
 
 }
