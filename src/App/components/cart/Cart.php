@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
-    <link rel="stylesheet" href="../../public/styles/cart/cart.css"> <!-- Add a separate CSS file for cart styles -->
+    <link rel="stylesheet" href="../../public/styles/cart/cart.css">
+    <link rel="stylesheet" href="../../public/styles/Global.css">
     <title>Shopping Cart</title>
     <script src="../../public/scripts/Cart/cart.js"></script>
 </head>

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global CSS -->
     <link rel="stylesheet" href="../../public/styles/product/ProductCard.css">
-    <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
     <link rel="stylesheet" href="../../public/styles/home/Home.css">
+    <link rel="stylesheet" href="../../public/styles/Global.css">
     <script src="../../public/scripts/functions/debounce.js"></script>
     <title>Home Page</title>
 </head>

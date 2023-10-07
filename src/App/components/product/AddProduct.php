@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
-    <title>Tambah Produk</title>
     <link rel="stylesheet" href="../../public/styles/product/addProduct.css"> 
+    <link rel="stylesheet" href="../../public/styles/Global.css">
+    <title>Tambah Produk</title>
 </head>
 <body>
     <?php

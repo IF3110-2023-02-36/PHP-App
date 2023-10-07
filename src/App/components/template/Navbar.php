@@ -3,6 +3,7 @@ $title = basename($_SERVER['PHP_SELF']);
 $title = str_replace('.php', '', $title);
 ?>
 
+<link rel="stylesheet" href="../../public/styles/template/Navbar.css">
 <header>
     <nav id="site-menu">
         <ul>
@@ -19,7 +20,7 @@ $title = str_replace('.php', '', $title);
                 <li><a href="/Logout.php">Log out</a></li>
             <?php elseif ($this->userRole === 2) : ?>
                 <!-- Display "Manage Store", "Profile", and "Log out" when logged in as admin -->
-                <li><a href="/Category.php">Category</a></li>
+                <li <?php if ($title == "Category") echo 'aria-current="page"'; ?>><a href="/Category.php">Category</a></li>
                 <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
                 <li><a href="/Logout.php">Log out</a></li>
             <?php endif; ?>

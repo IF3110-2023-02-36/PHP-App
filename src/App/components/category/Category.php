@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/template/Navbar.css">
     <link rel="stylesheet" href="../../public/styles/category/category.css">
     <link rel="stylesheet" href="../../public/styles/category/addCategory.css">
+    <link rel="stylesheet" href="../../public/styles/Global.css">
     <script src="../../public/scripts/Category/category.js"></script>
     <title>Kategori</title>
 </head>
@@ -45,6 +45,7 @@
     </table>
     <main>
         <form action="/AddCategory.php" method="POST">
+            <h><b>Tambah kategori baru</b></h>
             <label for="category_name">Nama Kategori:</label>
             <input type="text" id="category_name" name="category_name" required>
             <button type="submit">Tambah Kategori</button>
