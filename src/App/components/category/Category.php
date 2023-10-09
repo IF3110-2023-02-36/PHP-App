@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/styles/Global.css">
     <link rel="stylesheet" href="../../public/styles/category/category.css">
     <link rel="stylesheet" href="../../public/styles/category/addCategory.css">
-    <link rel="stylesheet" href="../../public/styles/Global.css">
     <script src="../../public/scripts/Category/category.js"></script>
     <title>Kategori</title>
 </head>
@@ -52,7 +52,7 @@
         </form>
     </main>
 </body>
-<span class="centering">
+<span class="pagination">
     <?php
     include(dirname(__DIR__) . '/template/Pagination.php');
     echo pagination_template("Category", $this->data["data"], $this->data["page"], $this->data["pageLimit"]);

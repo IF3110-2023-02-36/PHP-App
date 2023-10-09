@@ -15,6 +15,15 @@
     <div class="product-container">
         <div class="product-image">
             <img src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
+            <?php 
+                if(sizeof($this->data['productFile']) > 1){
+                    $src = '../../public/storage/video/'.$this->data['productFile'][1][2];
+                    echo "
+                    <video controls>
+                    <source src=$src type='video/mp4'>
+                    </video>";
+                }
+            ?>
         </div>
         <div class="product-details">
             <h2><?php echo $this->data['product']['name']; ?></h2>
@@ -29,14 +38,5 @@
             </form>
         </div>
     </div>
-    <?php 
-        if(sizeof($this->data['productFile']) > 1){
-            $src = '../../public/storage/video/'.$this->data['productFile'][1][2];
-            echo "
-            <video width='320' height='240' controls>
-            <source src=$src type='video/mp4'>
-            </video>";
-        }
-    ?>
 </body>
 </html>

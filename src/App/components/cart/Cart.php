@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/styles/Global.css">
+    <link rel="stylesheet" href="../../public/styles/cart/Cart.css">
     <title>Shopping Cart</title>
     <script src="../../public/scripts/Cart/cart.js"></script>
 </head>
@@ -71,7 +72,9 @@
         }
         ?>
     <div class="cart-actions">
-        <a href="/">Continue Shopping</a>
+        <form method="" action="/">
+            <button type="submit">Continue Shopping</button>
+        </form>
         <form action="/Checkout" method="POST">
             <button class="checkout-btn">Checkout</button>
         </form>

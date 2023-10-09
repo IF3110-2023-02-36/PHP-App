@@ -22,8 +22,7 @@
             <select name="product_category" id="product_category">
                 <?php 
                 foreach($this->data as $category){
-                    $selected = $category[0] == rand(0,5) ? "selected" : "";
-                    echo"<option value= $category[0] $selected> $category[1]</option>";
+                    echo"<option value= $category[0]> $category[1]</option>";
                 }
                 ?>
             </select>
