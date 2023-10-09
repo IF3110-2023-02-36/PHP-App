@@ -2,7 +2,7 @@
 
 function pagination_template($controllerName, $data, $currentPage, $dataLimit, $function = null) {
     $dataCount = count($data);
-    $pageCount = ceil($dataCount / $dataLimit);
+    $pageCount = max(1, ceil($dataCount / $dataLimit));
 
     function makeButton($controllerName, $page, $text, $disabled, $function) {
         $disable = $disabled ? 'disabled' : '';
