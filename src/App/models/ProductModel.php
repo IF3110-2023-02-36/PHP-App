@@ -91,12 +91,11 @@ class ProductModel extends Model{
         $stmt = $this->database->getConn()->prepare("UPDATE products SET category_id = ?, name = ?, description = ?, price = ?, stock = ? WHERE id =$id");
 
         $stmt->bind_param("issii", $category_id, $name, $description, $price, $stock);
-    
-    // Menjalankan pernyataan SQL
+        
         if ($stmt->execute()) {
-            return true; // Produk berhasil ditambahkan
+            return true; 
         } else {
-            return false; // Gagal menambahkan produk
+            return false; 
         }
     }
 
