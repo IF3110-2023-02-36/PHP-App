@@ -5,7 +5,9 @@
 class ProductController extends Controller{
     public function index($id){
         if($this->userRole !== 1) {
-            throw new Exception("You are not allowed to view this page", 405);
+            // throw new Exception("You are not allowed to view this page", 405);
+            header("Location: /login");
+            exit();
         }
         
         $productModel = $this->model("ProductModel");
