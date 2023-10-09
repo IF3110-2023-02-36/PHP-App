@@ -72,29 +72,41 @@ docker compose down
 
 **<u>Server-side</u>**
 
-| Fungsionalitas | NIM      |
-|----------------|----------|
-| Basis Data     | 13521122 |
-| Navbar         | 13521154 |
-| Home           | 13521173 |
-| Search         | 13521122 |
-| Keranjang      | 13521173 |
-| Manage Toko    | 13521154 |
-| Profile        | 13521154 |
-| Login          | 13521173 |
-| CRUD Produk    | 13521173 |
-| CRUD User      | 13521122 |
-| CRUD Keranjang | 13521154 |
+| Fungsionalitas                |           NIM                 |
+|-------------------------------|-------------------------------|
+|Cart                           | 13521122, 13521154, 13521173  | 
+|Category                       | 13521122                      |
+|Pagination                     | 13521173                      |
+|Login                          | 13521173                      |
+|Register                       | 13521173                      |
+|Search, sort, filter           | 13521122                      |
+|Product                        | 13521122                      |
+|Product Files                  | 13521122                      |
+|Profile                        | 13521154, 13521173            |
+|Debounce                       | 13521173                      |
+|Database                       | 13521122                      |
+|Routing                        | 13521173                      |
+|Home                           | 13521122, 13521173            |
 
 **<u>Client-side</u>**
 
-| Fungsionalitas| NIM      |
-|---------------|----------|
-| Navbar        | 13521154 |
-| Home          | 13521173 |
-| Search        | 13521122 |
-| Keranjang     | 13521173 |
-| Manage Toko   | 13521154 |
-| Profile       | 13521154 |
-| Login         | 13521173 |
-| Template Card | 13521122 |
+### _CLient Side_
+| Fungsionalitas                |           NIM                 |
+|-------------------------------|-------------------------------|
+|Cart                           | 13521122, 13521154            | 
+|Category                       | 13521122, 13521173            |
+|Pagination                     | 13521173                      |
+|Login                          | 13521173                      |
+|Register                       | 13521173                      |
+|Search, sort, filter           | 13521122                      |
+|Product                        | 13521122                      |
+|Product Files                  | 13521122                      |
+|Profile                        | 13521154                      |
+|Debounce                       | 13521173                      |
+|Home                           | 13521122, 13521173            |
+|Navbar                         | 13521154                      |
+
+### Bonus
+| Fungsionalitas                |           NIM                 |
+|-------------------------------|-------------------------------|
+|Docker                         | 13521173                      |
