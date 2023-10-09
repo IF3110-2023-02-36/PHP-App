@@ -5,7 +5,9 @@
 Aplikasi web yang dibuat adalah sebuah platform _e-commerce_ sehingga pengguna dapat melakukan pembelian produk secara _online_. Pengguna dapat melakukan pencarian produk. Selain itu, pengguna juga dapat melakukan pembelian produk dengan menambahkannya ke dalam keranjang. Aplikasi web ini juga menyediakan fitur manajemen bagi admin untuk mengelola produk dan kategori.
 
 ## Daftar _Requirement_
-
+1. Browser
+2. Docker
+   
 ## Cara Instalasi Server
 
 1. _Clone_ repositori ini.
@@ -60,10 +62,10 @@ docker compose down
 
 ## _Screenshot_ Tampilan Aplikasi
 
-### login
+### Login
 ![Login Page](./img/login.png)
 
-### register
+### Register
 ![Register Page](./img/register.png)
 
 ### Home
@@ -117,7 +119,7 @@ docker compose down
 
 **<u>Client-side</u>**
 
-### _CLient Side_
+### _Client Side_
 | Fungsionalitas                |           NIM                 |
 |-------------------------------|-------------------------------|
 |Cart                           | 13521122, 13521154            | 
@@ -132,6 +134,8 @@ docker compose down
 |Debounce                       | 13521173                      |
 |Home                           | 13521122, 13521173            |
 |Navbar                         | 13521154                      |
+|Styling                        | 13521173                      |
+|Responsive                     | 13521122, 13521173            |
 
 ### Bonus
 | Fungsionalitas                |           NIM                 |
