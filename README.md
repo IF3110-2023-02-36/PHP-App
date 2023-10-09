@@ -60,6 +60,33 @@ docker compose down
 
 ## _Screenshot_ Tampilan Aplikasi
 
+### login
+![Login Page](./img/login.png)
+
+### register
+![Register Page](./img/register.png)
+
+### Home
+![Home Page](./img/home.png)
+
+### Product
+![Product Page](./img/product.png)
+
+### Add Product
+![Edit Product Page](./img/editproduct.png)
+
+### Profile
+![Profile Page](./img/profile.png)
+
+### Edit Profile
+![Edit Profile Page](./img/editprofile.png)
+
+### Cart Profile
+![Cart Page](./img/cart.png)
+
+### Category Profile
+![Category Page](./img/category.png)
+
 ## Pembagian Tugas
 
 **Anggota Kelompok**
