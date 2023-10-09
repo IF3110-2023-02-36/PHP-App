@@ -24,7 +24,7 @@ class Routing {
             $filename = str_replace('.php', '', $url[1]);
             $filename = ucfirst($filename);
             $controllerName = $filename . "Controller";
-            $controllerFile = $controllerDir . '/' . $routes[$filename] . '/' . $controllerName . '.php';
+            $controllerFile = $controllerDir . '/' . ($routes[$filename] ?? '') . '/' . $controllerName . '.php';
             if(!file_exists($controllerFile)) {
                 $controllerName = "NotFoundController";
                 $controllerFile = $controllerDir . '/home/' . $controllerName . '.php';
