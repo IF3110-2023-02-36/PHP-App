@@ -44,7 +44,7 @@
                     <th>Description</th>
                     <td>
                         <textarea name="description">
-                            <?= $this->data['description'] ?>
+                            <? echo isset($data['description']) ? $data['description'] : ''; ?>
                         </textarea>
                     </td>
                 </tr>
