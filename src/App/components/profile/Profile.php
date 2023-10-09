@@ -34,7 +34,12 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td><?php echo $this->data['description'] ?></td>
+                <td><?php
+                    if (!isset($data['description'])) {
+                        echo '-';
+                    } else {
+                        echo $this->data['description'];
+                    } ?></td>
             </tr>
             <tr>
                 <th>
