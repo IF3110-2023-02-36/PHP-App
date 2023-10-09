@@ -15,13 +15,13 @@ $title = str_replace('.php', '', $title);
                 <li><a href="/register">Register</a></li>
             <?php elseif ($this->userRole === 1) : ?>
                 <!-- Display "Cart", "Profile", and "Log out" when logged in as a user -->
-                <li <?php if ($title == "Cart") echo 'aria-current="page"'; ?>><a href="/cart">Cart</a></li>
-                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
+                <li <?php if ($title == "cart") echo 'aria-current="page"'; ?>><a href="/cart">Cart</a></li>
+                <li <?php if ($title == "profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
                 <li><a href="/logout">Log out</a></li>
             <?php elseif ($this->userRole === 2) : ?>
                 <!-- Display "Category", "Profile", and "Log out" when logged in as admin -->
-                <li <?php if ($title == "Category") echo 'aria-current="page"'; ?>><a href="/category">Category</a></li>
-                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
+                <li <?php if ($title == "category") echo 'aria-current="page"'; ?>><a href="/category">Category</a></li>
+                <li <?php if ($title == "profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
                 <li><a href="/logout">Log out</a></li>
             <?php endif; ?>
         </ul>

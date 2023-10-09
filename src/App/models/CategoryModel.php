@@ -28,6 +28,7 @@ class CategoryModel extends Model{
     }
 
     public function updateCategory($id, $name){
+        if(strlen($name) > 25)throw new Exception('Category name is too long', 400);
         $stmt = $this->database->getConn()->prepare("UPDATE categories SET name = ? WHERE id = ?");
 
         $stmt->bind_param("si", $name, $id);
