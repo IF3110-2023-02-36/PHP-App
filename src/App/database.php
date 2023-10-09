@@ -31,7 +31,7 @@ class Database{
         );");
         $this->conn->query("CREATE TABLE IF NOT EXISTS categories(
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(50) UNIQUE NOT NULL
+            name VARCHAR(40) UNIQUE NOT NULL
         );");
         $this->conn->query("CREATE TABLE IF NOT EXISTS products(
             id INTEGER PRIMARY KEY AUTO_INCREMENT,

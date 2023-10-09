@@ -8,7 +8,7 @@ class CategoryModel extends Model{
     }
 
     public function addCategory($name){
-        if(strlen($name) > 50)throw new Exception('Category name is too long', 400);
+        if(strlen($name) > 25)throw new Exception('Category name is too long', 400);
         $isCategoryExist = $this->checkValueExist("categories", "name", $name);
         if($isCategoryExist)throw new Exception('Category already exist', 400);
 
