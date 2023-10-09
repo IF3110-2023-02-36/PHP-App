@@ -11,18 +11,18 @@ $title = str_replace('.php', '', $title);
 
             <?php if ($this->userRole === 0) : ?>
                 <!-- Display "Register" and "Log in" when not logged in -->
-                <li><a href="/Login.php">Log in</a></li>
-                <li><a href="/Register.php">Register</a></li>
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/register">Register</a></li>
             <?php elseif ($this->userRole === 1) : ?>
                 <!-- Display "Cart", "Profile", and "Log out" when logged in as a user -->
-                <li <?php if ($title == "Cart") echo 'aria-current="page"'; ?>><a href="/Cart.php">Cart</a></li>
-                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
-                <li><a href="/Logout.php">Log out</a></li>
+                <li <?php if ($title == "Cart") echo 'aria-current="page"'; ?>><a href="/cart">Cart</a></li>
+                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Log out</a></li>
             <?php elseif ($this->userRole === 2) : ?>
-                <!-- Display "Manage Store", "Profile", and "Log out" when logged in as admin -->
-                <li <?php if ($title == "Category") echo 'aria-current="page"'; ?>><a href="/Category.php">Category</a></li>
-                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/Profile.php">Profile</a></li>
-                <li><a href="/Logout.php">Log out</a></li>
+                <!-- Display "Category", "Profile", and "Log out" when logged in as admin -->
+                <li <?php if ($title == "Category") echo 'aria-current="page"'; ?>><a href="/category">Category</a></li>
+                <li <?php if ($title == "Profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Log out</a></li>
             <?php endif; ?>
         </ul>
     </nav>
