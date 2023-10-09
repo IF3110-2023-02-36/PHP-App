@@ -15,7 +15,7 @@ class CheckoutController extends Controller{
         }
 
         
-        header("Location: /Cart");
+        header("Location: /cart/checkout");
     }
 }
 

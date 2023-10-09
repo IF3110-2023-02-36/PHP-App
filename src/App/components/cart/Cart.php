@@ -14,8 +14,8 @@
     <div id="checkout-alert"></div>
 
     <?php
-    if($_SERVER["HTTP_REFERER"] == 'http://localhost:8000/Cart.php'){
-        echo '<script>showCheckoutAlert("Checkout successful!");</script>';;
+    if($this->data['checkout']){
+        echo '<script>showCheckoutAlert("Checkout successful!");</script>';
     }
     include(dirname(__DIR__) . '/template/Navbar.php');
     ?>

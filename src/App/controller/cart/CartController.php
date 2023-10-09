@@ -6,6 +6,12 @@ class CartController extends Controller {
             throw new Exception("You are not allowed to view this page", 405);
         }
 
+        $isCheckout = false;
+        if($page === "checkout") {
+            $isCheckout = true;
+            $page = 1;
+        }
+
         $cartModel = $this->model("CartModel");
         $cart = $cartModel->getUserCart($_SESSION['user_id']);
         
@@ -24,6 +30,7 @@ class CartController extends Controller {
             "data" => $cart,
             "page" => $page,
             "pageLimit" => $this->pageLimit,
+            "checkout" => $isCheckout,
 
             "cart" => $pageCart,
             "cartItems" => $cartItems,
