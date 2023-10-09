@@ -26,3 +26,8 @@ input, select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+img, video {
+    width: 350px;
+    height: auto;
+}

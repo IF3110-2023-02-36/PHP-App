@@ -32,3 +32,10 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
+
+@media screen and (max-width: 600px) {
+    img, video {
+        width: 350px;
+        height: auto;
+    }
+}

@@ -2,3 +2,15 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+img, video {
+    width:400px;
+    max-height: 400px;
+}
+
+@media screen and (max-width: 600px) {
+    img, video {
+        width: 40px;
+        height: auto;
+    }
+}

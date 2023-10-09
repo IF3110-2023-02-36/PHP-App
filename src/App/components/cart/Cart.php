@@ -35,7 +35,7 @@
                 "
                 <tr>
                     <td>
-                        <img src='{$imagePath}' alt='Product Image' style='width:400px;height:250px;'>
+                        <img src='{$imagePath}' alt='Product Image'>
                     </td>
                     <td>{$itemDetail['name']}</td>
                     <td>Rp {$itemDetail['price']}</td>

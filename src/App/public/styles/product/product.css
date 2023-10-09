@@ -1,6 +1,5 @@
 
 .product-container {
-    display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
@@ -11,7 +10,7 @@
 
 .product-image img, video{
     max-width: 100%; /* Set the maximum width to 100% of the container */
-    max-height: 300px; /* Set the maximum height (adjust as needed) */
+    max-height: 100px; /* Set the maximum height (adjust as needed) */
     width: auto; /* Ensure the image scales proportionally */
     height: auto;
 }

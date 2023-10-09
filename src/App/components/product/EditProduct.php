@@ -44,8 +44,7 @@
             
             <label for="product_image">Gambar Produk:</label>
             <div class="product-image">
-                <img width='450' height='300'  
-                src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
+                <img src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
             </div>
             <input type="file" id="product_image" name="product_image" accept="image/*" title="Ganti Produk">
 
