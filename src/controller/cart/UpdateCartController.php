@@ -6,8 +6,6 @@
             $product_id = $_POST['product_id'];
             $new_quantity = $_POST['new_quantity'];
             
-            echo $new_quantity;
-            
             $cartModel = $this->model("CartModel");
             $cartModel = $cartModel->updateProductFromCart($user_id, $product_id, $new_quantity);
     

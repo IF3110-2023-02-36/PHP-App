@@ -33,11 +33,6 @@ class AddProductController extends Controller{
         $pict_temp = $_FILES["product_image"]["tmp_name"];
         $pict_size = $_FILES["product_image"]["size"];
         $pict_error = $_FILES["product_image"]["error"];
-
-        // echo "a".$pict_name;
-        // echo "a".$pict_temp;
-        // echo "a".$pict_size;
-        // echo "a".$pict_error;
         
         $vid_name = $_FILES["product_video"]["name"];
         $vid_temp = $_FILES["product_video"]["tmp_name"];

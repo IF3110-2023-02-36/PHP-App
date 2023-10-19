@@ -10,12 +10,8 @@ class ProfileController extends Controller
         }
 
         $userModel = $this->model("UserModel");
-        
-        $data = [];
 
-        if (isset($_SESSION['user_id'])) {
-            $data = $userModel->getCurrentUser();
-        }
+        $data = $userModel->getCurrentUser();
 
         $this->render($data);
     }
