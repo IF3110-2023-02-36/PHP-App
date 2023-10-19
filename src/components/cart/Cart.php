@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/Global.css">
-    <link rel="stylesheet" href="../../public/styles/cart/Cart.css">
+    <link rel="stylesheet" href="../../styles/Global.css">
+    <link rel="stylesheet" href="../../styles/cart/Cart.css">
     <title>Shopping Cart</title>
-    <script src="../../public/scripts/Cart/cart.js"></script>
+    <script src="../../scripts/cart/cart.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                 $itemDetail = $this->data['cartItems'][$item['product_id']];
                 $productFile = $this->data['productFileModel']->getProductFile($itemDetail['id'])->fetch_assoc();
                 $total = $itemDetail['price'] * $item['quantity'];
-                $imagePath = '../../public/storage/image/'. $productFile['file_name'];
+                $imagePath = '../../storage/image/'. $productFile['file_name'];
                 $cartTable .= 
                 "
                 <tr>

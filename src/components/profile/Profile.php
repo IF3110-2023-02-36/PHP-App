@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/profile/Profile.css">
-    <link rel="stylesheet" href="../../public/styles/Global.css">
+    <link rel="stylesheet" href="../../styles/profile/Profile.css">
+    <link rel="stylesheet" href="../../styles/Global.css">
     <title>Profile</title>
 </head>
 

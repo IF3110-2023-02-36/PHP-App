@@ -63,9 +63,9 @@ class AddProductController extends Controller{
         }
         if (in_array($pict_extension, $allowed_extensions) ) {
             if ($pict_error === 0) {
-                $uploadPict_directory = __DIR__ . "/../../public/storage/image/";
+                $uploadPict_directory = __DIR__ . "/../../storage/image/";
 
-                $uploadVid_directory = __DIR__ . "/../../public/storage/video/";
+                $uploadVid_directory = __DIR__ . "/../../storage/video/";
 
                 if (!is_dir($uploadPict_directory)) {
                     mkdir($uploadPict_directory, 0755, true);
@@ -118,7 +118,7 @@ class AddProductController extends Controller{
             }
                 
             if($pict_error === 4){
-                $uploadVid_directory = __DIR__ . "/../../public/storage/video/";
+                $uploadVid_directory = __DIR__ . "/../../storage/video/";
 
                 if (!is_dir($uploadVid_directory)) {
                     mkdir($uploadVid_directory, 0755, true);

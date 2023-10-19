@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/product/product.css">
-    <link rel="stylesheet" href="../../public/styles/Global.css">
+    <link rel="stylesheet" href="../../styles/product/Product.css">
+    <link rel="stylesheet" href="../../styles/Global.css">
     <title><?php echo $this->data['product']['name']; ?></title>
 </head>
 <body>
@@ -14,10 +14,10 @@
 
     <div class="product-container">
         <div class="product-image">
-            <img src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
+            <img src= <?php echo "../../storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
             <?php 
                 if(sizeof($this->data['productFile']) > 1){
-                    $src = '../../public/storage/video/'.$this->data['productFile'][1][2];
+                    $src = '../../storage/video/'.$this->data['productFile'][1][2];
                     echo "
                     <video controls>
                     <source src=$src type='video/mp4'>

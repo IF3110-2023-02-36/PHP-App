@@ -1,7 +1,7 @@
 FROM php:8.0-apache
 WORKDIR /var/www/html
-COPY src/App/. /var/www/html
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+COPY src/. /var/www/html
+RUN docker-php-ext-install mysqli
 RUN a2enmod rewrite
-RUN apt-get -y update && apt-get -y upgrade && apt-get install -y ffmpeg
+RUN apt-get -y update && apt-get -y upgrade
 EXPOSE 8080

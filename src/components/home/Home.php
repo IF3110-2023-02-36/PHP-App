@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global CSS -->
-    <link rel="stylesheet" href="../../public/styles/product/ProductCard.css">
-    <link rel="stylesheet" href="../../public/styles/home/Home.css">
-    <link rel="stylesheet" href="../../public/styles/Global.css">
-    <script src="../../public/scripts/functions/debounce.js"></script>
+    <link rel="stylesheet" href="../../styles/product/ProductCard.css">
+    <link rel="stylesheet" href="../../styles/home/Home.css">
+    <link rel="stylesheet" href="../../styles/Global.css">
+    <script src="../../scripts/functions/debounce.js"></script>
     <title>Home Page</title>
 </head>
 
@@ -85,7 +85,7 @@
                 foreach($this->data['product'] as $product){
                     foreach($this->data['productFile'] as $productFile){
                         if($product[0] == $productFile[1]){
-                            $path = '../../public/storage/image/'. $productFile[2];
+                            $path = '../../storage/image/'. $productFile[2];
                             product_card_template(
                                 $path,
                                 $product[2],
@@ -108,5 +108,5 @@
 </body>
 
 </html>
-<script src="../../public/scripts/home/paginateForm.js"></script>
-<script src="../../public/scripts/home/search.js"></script>
+<script src="../../scripts/home/paginateForm.js"></script>
+<script src="../../scripts/home/search.js"></script>

@@ -3,7 +3,7 @@ $title = basename($_SERVER['PHP_SELF']);
 $title = str_replace('.php', '', $title);
 ?>
 
-<link rel="stylesheet" href="../../public/styles/template/Navbar.css">
+<link rel="stylesheet" href="../../styles/template/Navbar.css">
 <header>
     <nav id="site-menu">
         <ul>

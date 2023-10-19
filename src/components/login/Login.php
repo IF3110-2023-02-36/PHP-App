@@ -9,8 +9,8 @@ if (isset($_SESSION["user_id"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/login/Login.css">
-    <link rel="stylesheet" href="../../public/styles/Global.css">
+    <link rel="stylesheet" href="../../styles/login/Login.css">
+    <link rel="stylesheet" href="../../styles/Global.css">
     <title>Login</title>
 </head>
 

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/styles/product/addProduct.css"> 
-    <link rel="stylesheet" href="../../public/styles/Global.css">
-    <script src="../../public/scripts/popup.js"></script>
+    <link rel="stylesheet" href="../../styles/product/AddProduct.css"> 
+    <link rel="stylesheet" href="../../styles/Global.css">
+    <script src="../../scripts/popup.js"></script>
     <title>Edit Produk</title>
 </head>
 <body>
@@ -44,14 +44,14 @@
             
             <label for="product_image">Gambar Produk:</label>
             <div class="product-image">
-                <img src= <?php echo "../../public/storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
+                <img src= <?php echo "../../storage/image/". $this->data['productFile'][0][2] ?> alt="Product Image">
             </div>
             <input type="file" id="product_image" name="product_image" accept="image/*" title="Ganti Produk">
 
             <label for="product_video">Video Produk:</label>
             <?php 
                 if(sizeof($this->data['productFile'])>1){
-                    $src = '../../public/storage/video/'.$this->data['productFile'][1][2];
+                    $src = '../../storage/video/'.$this->data['productFile'][1][2];
                     echo "
                     <video width='320' height='240' controls>
                     <source src=$src type='video/mp4'>
