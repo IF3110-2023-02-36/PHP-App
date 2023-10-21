@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   web:
-    image: tubes-1:latest
+    image: if3110-2023-02-36-php-app:latest
     ports:
       - 8000:80
     build: 

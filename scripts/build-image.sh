@@ -1,1 +1,1 @@
-docker build -t tubes-1:latest .
+docker build -t if3110-2023-02-36-php-app:latest .
