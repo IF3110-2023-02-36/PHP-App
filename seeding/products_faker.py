@@ -1,4 +1,4 @@
-from templateFaker import *
+from template_faker import *
 
 # Constant
 PRODUCTS_COUNT = 10000

@@ -1,4 +1,4 @@
-from templateFaker import *
+from template_faker import *
 
 USER_COUNT = 1000
 
