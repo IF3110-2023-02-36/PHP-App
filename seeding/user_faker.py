@@ -8,7 +8,7 @@ for i in range(USER_COUNT):
             
     name = faker.name()
     username = name + "-" + str(i)
-    email = name + "@gmail.com"
+    email = username + "@gmail.com"
     password = name
     description = faker.text()
     category = "user"

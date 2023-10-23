@@ -8,6 +8,7 @@ PRODUCTS_LIMIT = 200
 # Get data from database
 select_users = '''SELECT id 
                     FROM users
+                    WHERE category = \'user\'
                     ORDER BY rand()
                     LIMIT ''' + str(USERS_LIMIT)
 cursor.execute(select_users)
@@ -31,9 +32,10 @@ for i in range(CARTS_COUNT):
 
     user_index = randint(0, USERS_LIMIT - 1)
     product_index = randint(0, PRODUCTS_LIMIT - 1)
-    while((users[user_index][0], products[product_index][0]) in existing_carts) :
-        user_id = randint(0, USERS_LIMIT - 1)
-        product_id = randint(0, PRODUCTS_LIMIT - 1)
+    while((users[user_index][0], products[product_index][0]) in existing_carts
+          or products[product_index][1] == 0) :
+        user_index = randint(0, USERS_LIMIT - 1)
+        product_index = randint(0, PRODUCTS_LIMIT - 1)
 
     user_id = users[user_index][0]
     product_id = products[product_index][0]
@@ -42,6 +44,7 @@ for i in range(CARTS_COUNT):
     carts_val = (user_id, product_id, quantity)
 
     cursor.execute(carts_sql, carts_val)
+    existing_carts.append((user_id, product_id))
     
 db.commit()
 print("Insertion success")
