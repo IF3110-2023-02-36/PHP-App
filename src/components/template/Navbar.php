@@ -17,6 +17,7 @@ $title = str_replace('.php', '', $title);
                 <!-- Display "Cart", "Profile", and "Log out" when logged in as a user -->
                 <li <?php if ($title == "cart") echo 'aria-current="page"'; ?>><a href="/cart">Cart</a></li>
                 <li <?php if ($title == "profile") echo 'aria-current="page"'; ?>><a href="/profile">Profile</a></li>
+                <li <?php if ($title == "history") echo 'aria-current="page"'; ?>><a href="/history">History</a></li>
                 <li><a href="/logout">Log out</a></li>
             <?php elseif ($this->userRole === 2) : ?>
                 <!-- Display "Category", "Profile", and "Log out" when logged in as admin -->
