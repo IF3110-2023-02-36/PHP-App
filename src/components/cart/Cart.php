@@ -76,6 +76,7 @@
             <button type="submit">Continue Shopping</button>
         </form>
         <form action="/Checkout" method="POST">
+            <textarea name="alamat" id="" cols="30" rows="10" placeholder="Masukkan alamat disini" required></textarea>
             <button class="checkout-btn">Checkout</button>
         </form>
     </div>
