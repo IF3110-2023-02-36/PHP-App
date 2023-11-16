@@ -20,20 +20,35 @@
             <span class="centering">
                 <ul>
                     <?php
-                    include_once(dirname(__DIR__) . "/template/HistoryCard.php");
+                    include_once(dirname(__DIR__) . "/template/PesananCard.php");
 
                     ?>
                     <section class="articles">
                     <?php
                     $index = 1;
-                    foreach ($this->data['pesanan'] as $pesanan) {
-                        history_card_template(
-                            "Pesanan".$index,
-                            $pesanan['price'],
-                            $pesanan['status'],
-                            $pesanan['id']);
-                        $index++;
+
+
+                    // var_dump(count($this->data['pesanan']));
+                    if(is_array($this->data['pesanan']->return)){
+                        foreach ($this->data['pesanan']->return as $pesanan) {
+                            pesanan_card_template(
+                                "Pesanan".$index,
+                                $pesanan->harga,
+                                $pesanan->status,
+                                $pesanan->id);
+                            $index++;
+                        }
+                    }else{
+                        foreach ($this->data['pesanan'] as $pesanan) {
+                            pesanan_card_template(
+                                "Pesanan".$index,
+                                $pesanan->harga,
+                                $pesanan->status,
+                                $pesanan->id);
+                            $index++;
+                        }
                     }
+                    
                     ?>
                     </section>
                 </ul>

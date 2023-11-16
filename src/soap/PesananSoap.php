@@ -38,13 +38,26 @@ class PesananSoap extends BaseSoap{
     }
 
     public static function getPesanan($userId){
-        var_dump($userId);
         $result = static::$client->__soapCall('getPesananByIdUser', array(
             'getPesananByIdUser' => array(
                 'arg0' => $userId,
             )
         ));
+        
+        if(empty((array) $result)){
+            return null;
+        }
 
+        return $result;
+    }
+
+    public static function getPesananByIdPesanan($pesananId){
+        $result = static::$client->__soapCall('getPesananByIdPesanan', array(
+            'getPesananByIdPesanan' => array(
+                'arg0' => $pesananId,
+            )
+        ));
+        
         if(empty((array) $result)){
             return null;
         }

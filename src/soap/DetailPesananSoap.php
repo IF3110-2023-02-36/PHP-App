@@ -1,7 +1,7 @@
 <?php
 
 require_once  __DIR__ . '/BaseSoap.php';
-class PesananSoap extends BaseSoap{
+class DetailPesananSoap extends BaseSoap{
     public static SoapClient $client;
     public static string $service;
 
@@ -18,7 +18,7 @@ class PesananSoap extends BaseSoap{
 
     public static function getDetailPesanan(int $idPesanan){
         $result = static::$client->__soapCall('getDetailPesanan', array(
-            'addPesanan' => array(
+            'getDetailPesanan' => array(
                 'arg0' => $idPesanan
             )
         ));
