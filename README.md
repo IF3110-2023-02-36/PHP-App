@@ -1,11 +1,11 @@
-# Tugas Besar 1 - IF3110 Pengembangan Aplikasi Berbasis Web
+# Tugas Besar _Milestone_ 2 IF3110 - _PHP App_
 
-## Deksripsi Aplikasi Web
+## Deskripsi Aplikasi Web
 
 Aplikasi web yang dibuat adalah sebuah platform _e-commerce_ sehingga pengguna dapat melakukan pembelian produk secara _online_. Pengguna dapat melakukan pencarian produk. Selain itu, pengguna juga dapat melakukan pembelian produk dengan menambahkannya ke dalam keranjang. Aplikasi web ini juga menyediakan fitur manajemen bagi admin untuk mengelola produk dan kategori.
 
 ## Daftar _Requirement_
-1. Browser
+1. _Browser_
 2. Docker
    
 ## Cara Instalasi Server
@@ -13,13 +13,13 @@ Aplikasi web yang dibuat adalah sebuah platform _e-commerce_ sehingga pengguna d
 1. _Clone_ repositori ini.
 
 ```sh
-git clone https://gitlab.informatika.org/if3110-2023-01-36/Tugas-Besar-1.git
+git clone https://gitlab.informatika.org/if3110-2023-02-36/PHP-App.git
 ```
 
-2. Ubah _current directory_ menjadi folder `Tugas-Besar-1`.
+2. Ubah _current directory_ menjadi folder `PHP-App`.
 
 ```sh
-cd Tugas-Besar-1
+cd PHP-App
 ```
 
 3. Pastikan telah menginstal dan menjalankan aplikasi Docker.
@@ -27,7 +27,7 @@ cd Tugas-Besar-1
 4. _Build_ kontainer Docker atau jalankan file bat.
 
 ```sh
-docker build -t tubes-1:latest .
+docker build -t if3110-2023-02-36-php-app:latest .
 ```
 
 ```sh
@@ -51,7 +51,7 @@ docker compose up -d
 2. Akses aplikasi web di localhost dengan _port_ 8000.
 
 ```sh
-http://localhost:8080/
+http://localhost:8000/
 ```
 
 3. Hentikan aplikasi web dengan menjalankan
@@ -60,7 +60,7 @@ http://localhost:8080/
 docker compose down
 ```
 
-## _Screenshot_ Tampilan Aplikasi
+## Tangkapan Layar Tampilan Aplikasi
 
 ### Login
 ![Login Page](./img/login.png)
@@ -91,15 +91,15 @@ docker compose down
 
 ## Pembagian Tugas
 
-**Anggota Kelompok**
-
+### Anggota Kelompok
+**Kelompok 36**
 | Nama                         | NIM      |
 |------------------------------|----------|
 | Ulung Adi Putra              | 13521122 |
 | Naufal Baldemar Ardanni      | 13521154 |
 | Dewana Gustavus Haraka Otang | 13521173 |
 
-**<u>Server-side</u>**
+### _Server-side_
 
 | Fungsionalitas                |           NIM                 |
 |-------------------------------|-------------------------------|
@@ -117,9 +117,8 @@ docker compose down
 |Routing                        | 13521173                      |
 |Home                           | 13521122, 13521173            |
 
-**<u>Client-side</u>**
+### _Client-side_
 
-### _Client Side_
 | Fungsionalitas                |           NIM                 |
 |-------------------------------|-------------------------------|
 |Cart                           | 13521122, 13521154            | 
@@ -141,3 +140,9 @@ docker compose down
 | Fungsionalitas                |           NIM                 |
 |-------------------------------|-------------------------------|
 |Docker                         | 13521173                      |
+
+### PHP App (Revisi/Tambahan)
+| Fungsionalitas                |           NIM                 |
+|-------------------------------|-------------------------------|
+| Backend Fungsi X              | 13521122, 13521154, 13521173  | 
+| ...                           | ...                           | 
