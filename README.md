@@ -148,6 +148,6 @@ docker compose down
 | tracking pesanan detail            | 13521122  | 
 | add pesanan                   | 13521122                           | 
 | rating                 | 13521122                           |
-| history             | 13521122                           |
-| history detail            | 13521122                           |
+| history             | 13521122, 13521173                          |
+| history detail            | 13521122, 13521173                           |
 | SOAP + Rest request              | 13521122  | 
