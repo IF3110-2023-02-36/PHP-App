@@ -22,21 +22,19 @@
                     <?php
                     include_once(dirname(__DIR__) . "/template/HistoryCard.php");
 
-                    // TODO : fetch data from REST
-                    $histories = [
-                        ['courierName' => "jamal", 'price' => 100, 'rating' => 4, 'historyId' => 1],
-                        ['courierName' => "rusdi", 'price' => 69, 'rating' => 0, 'historyId' => 2],
-                        ['courierName' => "Ukin", 'price' => 420, 'rating' => 3, 'historyId' => 3],
-                    ];
+                    $histories = $this->data;
                     ?>
                     <section class="articles">
                     <?php
+                    // var_dump($histories);
+                    $index = 1;
                     foreach ($histories as $history) {
                         history_card_template(
-                            $history['courierName'],
-                            $history['price'],
+                            "Pesanan" . $index,
+                            "Penerima: ".$history['nama_penerima'],
                             $history['rating'],
-                            $history['historyId']);
+                            $history['id']);
+                        $index++;
                     }
                     ?>
                     </section>
