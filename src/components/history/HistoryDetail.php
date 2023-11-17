@@ -17,24 +17,28 @@
         <div class="container">
             <?php
             // TODO : fetch from REST
-            $history = ['courierName' => "jamal", 'shippingCost' => 2, 'rating' => 0, 'historyId' => 1];
-            $productDetails = [
-                ["productName" => "pisau cukur", "quantity" => 69],
-                ["productName" => "ivan gunawan", "quantity" => 420],
-                ["productName" => "pisau cukur 2", "quantity" => 692],
-                ["productName" => "ivan gunawan 2", "quantity" => 4202],
-            ];
+            // var_dump($this->data);
+            $history = $this->data['history'];
+            $productDetails = $this->data['details'];
+            $kurir = $this->data['kurir'];
             ?>
             
             <label>Nama Kurir : </label> 
-            <p><?=$history['courierName']?></p>
+            <p><?=$kurir['name']?></p>
             <label>Biaya ongkir : </label> 
-            <p><?=$history['shippingCost']?></p>
+            <p><?=$history['biaya_pengiriman']?></p>
             <label>Rating : </label> 
             <p><?=($history['rating'] === 0) ? 'belum memberi rating' : $history['rating']?></p>
             <?php 
                 if($history['rating'] === 0) {
-                    // TODO : giving rating
+                    $id = $history['id'] ;
+                    $temp = '
+                    <form action="/HistoryDetail" method="POST">
+                        <input type="number" name="rating" min="1" max="5">
+                        <input type="hidden" name="idPesanan" value=' . $id . '>
+                        <input type="submit" value="Submit">
+                    </form>';
+                    echo $temp;
                 }
             ?>
             
@@ -46,7 +50,7 @@
                 </tr>
                 <?php foreach ($productDetails as $product) { ?>
                     <tr>
-                        <td><?php echo $product['productName']; ?></td>
+                        <td><?php echo $product['product_name']; ?></td>
                         <td><?php echo $product['quantity']; ?></td>
                     </tr>
                 <?php } ?>
