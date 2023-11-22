@@ -1,16 +1,20 @@
 from template_faker import *
 
-CATEGORIES_COUNT = 10000
+def categories_faker(CATEGORIES_COUNT : int):
+    for i in range(CATEGORIES_COUNT):
+        category_sql = '''INSERT INTO categories(name) 
+                        VALUES(%s)'''
 
-for i in range(CATEGORIES_COUNT):
-    category_sql = '''INSERT INTO categories(name) 
-                    VALUES(%s)'''
+        category_name = "category-" + str(i + 1)
+        
+        category_val = (category_name,)
 
-    category_name = "category-" + str(i + 1)
+        cursor.execute(category_sql, category_val)
+        
+    db.commit()
+    print("Insertion success")
     
-    category_val = (category_name,)
-
-    cursor.execute(category_sql, category_val)
+if __name__ == "__main__":
+    CATEGORIES_COUNT = 10000
+    categories_faker(CATEGORIES_COUNT)
     
-db.commit()
-print("Insertion success")
