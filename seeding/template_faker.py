@@ -28,3 +28,10 @@ def clear_table(table_name : str):
     cursor.execute(delete_sql)
     db.commit()
     print("Deletion success")
+
+def clear_database():
+    clear_table("carts")
+    clear_table("product_files")
+    clear_table("products")
+    clear_table("categories")
+    clear_table("users")
